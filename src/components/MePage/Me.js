@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FlatList, StyleSheet, Text, View, Image, Button, TouchableOpacity, TextInput, Alert } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import { FlatGrid } from 'react-native-super-grid';
 
 export const Me = (props) => {
     const images = {
@@ -19,31 +19,15 @@ export const Me = (props) => {
         Alert.alert(item);
         setStyle(styles.postcardLarge);
     }
-    const GoalInput = () => {
-        const [value, onChangeText] = React.useState('');
-        return (
-            <TextInput
-                style={{
-                    height: 40, borderColor: 'gray', borderWidth: 1,
-                    fontSize: 14,
-                    backgroundColor: 'rgba(255,255,255,0.7)',
-                    marginBottom: 10,
-                    padding: "1%",
-                }}
-                placeholder='My Grand New Goal'
-                onChangeText={text => onChangeText(text)}
-                value={value}
-            />
-        );
-    }
-    const [selectedValue, setSelectedValue] = useState("No. Leave me alone.");
+
     const data = ["1", "2", "3", "4", "5", "6", "7", "8"];
     const renderItem = ({ item }) => (
         <View>
             {/* <TouchableOpacity activeOpacity={.5} onPress={() => large(item)}> */}
-                <Image
-                    style={style}
-                    source={images[item]} />
+            <Image
+                // style={style}
+                style={styles.item}
+                source={images[item]} />
             {/* </TouchableOpacity> */}
         </View>
     );
@@ -68,38 +52,31 @@ export const Me = (props) => {
                     <Text style={styles.field}>Contact: {props.contact}</Text>
                 </View>
             </View>
-            <Text style={styles.header}>Set A New Goal</Text>
-            <Text style={styles.text}>Describe your new goal here:</Text>
-            <GoalInput></GoalInput>
-            <Text style={styles.text}>Do you want to invite others?</Text>
-            <Picker
-                selectedValue={selectedValue}
-                style={{
-                    height: 40,
-                    fontSize: 14,
-                    backgroundColor: 'rgba(255,255,255,0.7)',
-                    marginBottom: 10
-                }}
-                onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-            >
-                <Picker.Item label="No. Leave me alone." value="0" />
-                <Picker.Item label="Sure Yes! I want to invite my friends!" value="1" />
-                <Picker.Item label="Sure Yes! Make it public!" value="2" />
-            </Picker>
-            <Button
-                onPress={SetGoal}
-                title="Set Your Goal"
-                color="#841584"
-            />
             <Text style={styles.header}>Achievements</Text>
-            <FlatList data={data} renderItem={renderItem} />
+            {/* <View style={styles.columns}> */}
+            <View>
+                <FlatList data={data} renderItem={renderItem} />
+            </View>
+            {/* <FlatGrid
+                itemDimension={100}
+                data={images}
+                renderItem={renderItem}
+                keyExtractor={item => item.id} /> */}
         </View>
     );
 }
 
-const SetGoal = () => { }
-
 const styles = StyleSheet.create({
+    columns: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start'
+    },
+    item: {
+        width: 160,
+        height: 90,
+    },
     top: {
         backgroundColor: "black",
         padding: 20,
