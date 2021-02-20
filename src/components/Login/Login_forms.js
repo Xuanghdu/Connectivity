@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     },
     text: {
         padding: 10,
-        fontFamily: 'Garamond',
+        // fontFamily: 'Garamond, Droid Serif, serif',
         color: 'beige',
     },
     row: {
