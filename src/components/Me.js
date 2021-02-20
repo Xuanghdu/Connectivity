@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
 
 export const Me = (props) => {
     return (
@@ -33,11 +33,32 @@ export const Me = (props) => {
                 accessibilityLabel="Learn more about this purple button"
             />
             <Text style={styles.header}>Achievements</Text>
+            <TouchableOpacity activeOpacity={.5} onPress={callFun}>
+                <Image
+                    style={styles.postcardSmall}
+                    source={{
+                        uri: 'https://reactnative.dev/img/tiny_logo.png',
+                    }}
+                />
+            </TouchableOpacity>
         </View>
     );
 }
 
 const SetGoal = () => { }
+
+function callFun() {
+    return (
+        <View>
+            <Image
+                style={styles.postcardBig}
+                source={{
+                    uri: 'https://reactnative.dev/img/header_logo.svg',
+                }}
+            />
+        </View>
+    );
+}
 
 const styles = StyleSheet.create({
     top: {
@@ -60,6 +81,14 @@ const styles = StyleSheet.create({
     avatar: {
         width: 100,
         height: 100,
+    },
+    postcardSmall: {
+        width: 160,
+        height: 90,
+    },
+    postcardBig: {
+        width: 320,
+        height: 180,
     },
     field: {
         // fontFamily: 'Garamond, Droid Serif, serif',
