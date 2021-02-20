@@ -68,12 +68,14 @@ export class Login_forms extends React.Component {
                     title={this.props.usage}
                     onPress={this.submit}
                 />
-
-                <Button
-                    title={this.props.usage === 'Login' ? 'Register' : 'Login'}
-                    color='#121212'
-                    onPress={this.interchange}
-                />
+                < TouchableOpacity >
+                    <Text
+                        style={styles.text}
+                        onPress={this.interchange}
+                    >
+                        {this.props.usage === 'Login' ? 'Register' : 'Login'}
+                    </Text>
+                </ TouchableOpacity>
                 <View style={styles.text}>
                     <Text>
                         {this.state.username}
@@ -101,9 +103,10 @@ const styles = StyleSheet.create({
     },
     input: {
         height: '10%',
+        fontSize: 14,
         backgroundColor: 'rgba(255,255,255,0.7)',
         marginBottom: 10,
-        padding: "5%",
+        padding: "1%",
 
     },
     button: {
