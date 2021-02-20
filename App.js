@@ -1,22 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Welcome } from './src/components/Welcome';
+import { Me } from './src/components/Me';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>UofTHacks VIII Starts Now! Hello World!</Text>
-      <Greeting name="Xuanghdu" />
+      <Welcome />
       <StatusBar style="auto" />
     </View>
-  );
-}
-
-const Greeting = (props) => {
-  return (
-    <view style={styles.center}>
-      <Text>Welcome to Connectivity, {props.name}!</Text>
-    </view>
   );
 }
 
