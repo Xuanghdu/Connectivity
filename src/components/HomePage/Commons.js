@@ -6,7 +6,7 @@ export function SectionTitle({ children }) {
     const colorTheme = useContext(ColorThemeContext);
     const style = {
         color: colorTheme.accent,
-        fontFamily: "Lucida Console, Courier, monospace",
+        // fontFamily: "Lucida Console, Courier, monospace",
         fontSize: 19.2,
         marginVertical: 4.8,
     };
