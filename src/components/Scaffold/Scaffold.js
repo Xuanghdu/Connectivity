@@ -51,7 +51,7 @@ export function Scaffold(props) {
     return (
         <View style={styles.container}>
             <View style={styles.contentContainer}>
-                {index === 0 ? <HomePage /> : <CalendarPage />}
+                {index === 0 ? <HomePage /> : (index === 1 ? <CalendarPage />: <Me />)}
             </View>
             <View>
                 <BottomNavigationBar index={index} setIndex={setIndex} />
