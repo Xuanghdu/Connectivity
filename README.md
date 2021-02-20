@@ -1,3 +1,3 @@
 # Connectivity
 
-UofTHacks VIII
+UofTHacks VIIII
