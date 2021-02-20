@@ -37,7 +37,7 @@ export const Me = (props) => {
     );
 }
 
-const SetGoal = () => {}
+const SetGoal = () => { }
 
 const styles = StyleSheet.create({
     top: {
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     container: {
         margin: '10px',
         flex: 1,
-        alignItems: 'left',
+        alignItems: 'center',
         justifyContent: 'center',
     },
     avatar: {
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     },
     text: {
         margin: "10px",
-        padding: "10px",
+        padding: 10,
         fontFamily: 'Garamond',
         color: 'beige',
     }
