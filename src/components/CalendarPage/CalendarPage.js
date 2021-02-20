@@ -8,7 +8,7 @@ function MonthTitle({ children }) {
     const colorTheme = useContext(ColorThemeContext);
     const style = {
         color: colorTheme.text,
-        fontFamily: "Lucida Console, Courier, monospace",
+        // fontFamily: "Lucida Console, Courier, monospace",
         fontSize: 19.2,
         marginVertical: 4.8,
     };
@@ -20,7 +20,7 @@ function CalendarDayItem({ index }) {
     const viewStyle = {
         borderColor: colorTheme.accent,
         borderStyle: "solid",
-        borderWidth: "2px",
+        borderWidth: 2,
         height: 160,
     };
     const indexStyle = {

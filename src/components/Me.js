@@ -42,6 +42,7 @@ const SetGoal = () => { }
 const styles = StyleSheet.create({
     top: {
         backgroundColor: '#121212',
+        padding: 20,
     },
     row: {
         flexDirection: "row",
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     container: {
-        margin: '10px',
+        margin: 10,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
         color: 'beige',
     },
     text: {
-        margin: "10px",
+        margin: 10,
         padding: 10,
         // fontFamily: 'Garamond, Droid Serif, serif',
         color: 'beige',

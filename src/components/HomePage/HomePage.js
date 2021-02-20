@@ -10,9 +10,9 @@ function TopNavigationItem({ selected, onPress, children }) {
     const style = {
         borderColor: selected ? colorTheme.titleBorder : "transparent",
         borderStyle: "solid",
-        borderWidth: "2px",
+        borderWidth: 2,
         color: colorTheme.titleText,
-        fontFamily: "Times, Times New Roman, Georgia, serif",
+        // fontFamily: "Times, Times New Roman, Georgia, serif",
         fontSize: 19.2,
         padding: 4.8,
     };
