@@ -13,8 +13,8 @@ function TopNavigationItem({ selected, onPress, children }) {
         borderWidth: "2px",
         color: colorTheme.titleText,
         fontFamily: "Times, Times New Roman, Georgia, serif",
-        fontSize: "1.2rem",
-        padding: ".3rem",
+        fontSize: 19.2,
+        padding: 4.8,
     };
     return (
         <TouchableWithoutFeedback onPress={onPress}>
@@ -29,13 +29,13 @@ function TopNavigationBar({ index, setIndex }) {
     const colorTheme = useContext(ColorThemeContext);
     const style = {
         backgroundColor: colorTheme.accent,
-        borderRadius: ".6rem",
+        borderRadius: 9.6,
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-        marginBottom: "1rem",
-        paddingHorizontal: "1.6rem",
-        paddingVertical: ".3rem",
+        marginBottom: 16,
+        paddingHorizontal: 25.6,
+        paddingVertical: 4.8,
     };
     return (
         <View style={style}>
@@ -58,8 +58,8 @@ export function HomePage(props) {
     const colorTheme = useContext(ColorThemeContext);
     const style = {
         backgroundColor: colorTheme.background,
-        paddingHorizontal: "6vw",
-        paddingVertical: "1rem",
+        paddingHorizontal: "6%",
+        paddingVertical: 16,
     };
     return (
         <View style={style}>
