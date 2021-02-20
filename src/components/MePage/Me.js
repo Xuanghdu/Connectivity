@@ -1,36 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { FlatList, StyleSheet, Text, View, Image, Button, TouchableOpacity, TextInput, Alert } from 'react-native';
+import { ColorThemeContext } from '../../contexts/ColorThemeContext';
 import { FlatGrid } from 'react-native-super-grid';
 
-export const Me = (props) => {
-    const images = {
-        "1": require('../../../img/jpg/1.jpg'),
-        "2": require('../../../img/jpg/2.jpg'),
-        "3": require('../../../img/jpg/3.jpg'),
-        "4": require('../../../img/jpg/4.jpg'),
-        "5": require('../../../img/jpg/5.jpg'),
-        "6": require('../../../img/jpg/6.jpg'),
-        "7": require('../../../img/jpg/7.jpg'),
-        "8": require('../../../img/jpg/8.jpg'),
-    }
+const images = {
+    "1": require('../../../img/jpg/1.jpg'),
+    "2": require('../../../img/jpg/2.jpg'),
+    "3": require('../../../img/jpg/3.jpg'),
+    "4": require('../../../img/jpg/4.jpg'),
+    "5": require('../../../img/jpg/5.jpg'),
+    "6": require('../../../img/jpg/6.jpg'),
+    "7": require('../../../img/jpg/7.jpg'),
+    "0": require('../../../img/jpg/8.jpg'),
+}
 
-    const [style, setStyle] = useState(styles.postcardSmall);
-    const large = (item) => {
-        Alert.alert(item);
-        setStyle(styles.postcardLarge);
-    }
-
-    const data = ["1", "2", "3", "4", "5", "6", "7", "8"];
-    const renderItem = ({ item }) => (
+function ImageItem({ index }) {
+    const colorTheme = useContext(ColorThemeContext);
+    return (
         <View>
             {/* <TouchableOpacity activeOpacity={.5} onPress={() => large(item)}> */}
             <Image
                 // style={style}
                 style={styles.item}
-                source={images[item]} />
+                source={images[index]} />
             {/* </TouchableOpacity> */}
         </View>
     );
+}
+
+export const Me = (props) => {
+
+    // const [style, setStyle] = useState(styles.postcardSmall);
+    // const large = (item) => {
+    //     Alert.alert(item);
+    //     setStyle(styles.postcardLarge);
+    // }
+
+    const data = ["0", "1", "2", "3", "4", "5", "6", "7"];
+    // const renderItem = ({ item }) => (
+    //     <View>
+    //         {/* <TouchableOpacity activeOpacity={.5} onPress={() => large(item)}> */}
+    //         <Image
+    //             // style={style}
+    //             style={styles.item}
+    //             source={images[item]} />
+    //         {/* </TouchableOpacity> */}
+    //     </View>
+    // );
+    const renderItem = ({ item, index }) => {
+        return <ImageItem index={index} />;
+    };
     return (
         <View style={styles.top}>
             <Text style={styles.header}>Personal Profile</Text>
@@ -54,14 +73,18 @@ export const Me = (props) => {
             </View>
             <Text style={styles.header}>Achievements</Text>
             {/* <View style={styles.columns}> */}
-            <View>
+            {/* <View>
                 <FlatList data={data} renderItem={renderItem} />
-            </View>
+            </View> */}
             {/* <FlatGrid
-                itemDimension={100}
+                itemDimension={90}
                 data={images}
                 renderItem={renderItem}
                 keyExtractor={item => item.id} /> */}
+            <FlatGrid
+                itemDimension={144}
+                data={data}
+                renderItem={renderItem} />
         </View>
     );
 }
@@ -74,8 +97,8 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start'
     },
     item: {
-        width: 160,
-        height: 90,
+        width: 144,
+        height: 81,
     },
     top: {
         backgroundColor: "black",
