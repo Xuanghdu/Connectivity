@@ -1,0 +1,12 @@
+{
+  "name": "Connectivity",
+  "displayName": "Connectivity",
+  "expo": {
+    "name": "Connectivity",
+    "slug": "Connectivity",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
