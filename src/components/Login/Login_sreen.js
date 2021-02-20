@@ -9,7 +9,7 @@ import { Login_forms } from './Login_forms'
 
 export function Login_screen({ navigation }) {
     return (
-        <KeyboardAvoidingView behavior='padding' style={styles.container} >
+        <View style={styles.container}>
             <View style={styles.avatar_container}>
                 <Image
                     style={styles.avatar}
@@ -21,8 +21,7 @@ export function Login_screen({ navigation }) {
             <View style={styles.form_container}>
                 <Login_forms usage='Login' navigation={navigation} />
             </View>
-
-        </KeyboardAvoidingView>
+        </View>
     );
 
 }
@@ -36,7 +35,6 @@ const styles = StyleSheet.create({
     },
     container: {
         backgroundColor: '#121212',
-        margin: 10,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
@@ -46,14 +44,12 @@ const styles = StyleSheet.create({
         height: 100,
     },
     avatar_container: {
-        flex: 0.5,
-        flexGrow: 1,
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
     },
     form_container: {
         flex: 1,
-        flexGrow: 1,
         alignItems: 'center',
         justifyContent: 'center',
     },

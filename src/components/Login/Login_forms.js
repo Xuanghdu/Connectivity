@@ -76,12 +76,13 @@ export class Login_forms extends React.Component {
                         {this.props.usage === 'Login' ? 'Register' : 'Login'}
                     </Text>
                 </ TouchableOpacity>
-                <View style={styles.text}>
+                <View style={styles.container}>
                     <Text>
                         {this.state.username}
                         {this.state.password}
                     </Text>
                 </View>
+
             </View >
 
         );
@@ -102,21 +103,13 @@ const styles = StyleSheet.create({
         height: 100,
     },
     input: {
-        height: '10%',
+        height: 30,
         fontSize: 14,
         backgroundColor: 'rgba(255,255,255,0.7)',
         marginBottom: 10,
         padding: "1%",
 
     },
-    button: {
-        elevation: 8,
-        backgroundColor: "#009688",
-        borderRadius: 10,
-        paddingVertical: 10,
-        paddingHorizontal: 12
-    },
-
     text: {
         padding: 10,
         // fontFamily: 'Garamond, Droid Serif, serif',
