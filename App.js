@@ -11,7 +11,7 @@ import { NavigationActions } from "react-navigation";
 import { HomePage } from './src/components/HomePage/HomePage';
 import { Scaffold } from './src/components/Scaffold/Scaffold'
 
-
+console.disableYellowBox = true;
 
 // setTimeout(() => {
 //   navigate('Splash'); //this.props.navigation.navigate('Login')
@@ -33,9 +33,9 @@ export default class App extends Component {
       <NavigationContainer screenOptions={screenOptions}>
         <Stack.Navigator screenOptions={screenOptions}>
 
-          <Stack.Screen name="Splash" component={Splash} />
+          {/* <Stack.Screen name="Splash" component={Splash} />
           <Stack.Screen name="Login" component={Login_screen} />
-          <Stack.Screen name="Register" component={Register_screen} />
+          <Stack.Screen name="Register" component={Register_screen} /> */}
           <Stack.Screen name="Scaffold" component={Scaffold} />
           <Stack.Screen name="Me" component={Me} />
 

@@ -33,7 +33,7 @@ function TopNavigationBar({ index, setIndex }) {
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-        marginBottom: 16,
+        marginVertical: 16,
         paddingHorizontal: 25.6,
         paddingVertical: 4.8,
     };

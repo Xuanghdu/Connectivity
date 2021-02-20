@@ -63,6 +63,7 @@ function UsefulContentCard({ title, imageUri }) {
 }
 
 export function SelfTab({ personalGoals, usefulContent }) {
+// export function SelfTab({ personalGoals }) {
     if (true) {
         personalGoals = [];
         for (let i = 0; i < 12; ++i)
@@ -100,13 +101,13 @@ export function SelfTab({ personalGoals, usefulContent }) {
                 data={personalGoals}
                 renderItem={personalGoalsRenderItem}
                 keyExtractor={item => item.id} />
-            <SectionDivider />
-            <SectionTitle>Useful Content</SectionTitle>
+            {/* <SectionDivider /> */}
+            {/* <SectionTitle>Useful Content</SectionTitle>
             <FlatGrid
                 itemDimension={200}
                 data={usefulContent}
                 renderItem={usefulContentRenderItem}
-                keyExtractor={item => item.id} />
+                keyExtractor={item => item.id} /> */}
         </View>
     );
 }

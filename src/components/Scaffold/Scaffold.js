@@ -1,13 +1,17 @@
 import React, { useContext, useState } from 'react';
-import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Text, TouchableWithoutFeedback, View, StyleSheet } from 'react-native';
 import { ColorThemeContext } from "../../contexts/ColorThemeContext";
 import { HomePage } from '../HomePage/HomePage';
 import { CalendarPage } from '../CalendarPage/CalendarPage';
+import { Me } from '../Me';
+import { vw, vh, vmin, vmax } from 'react-native-expo-viewport-units';
 
 function BottomNavigationItem({ selected, onPress, children }) {
     const colorTheme = useContext(ColorThemeContext);
     const style = {
         color: selected ? colorTheme.accent : colorTheme.text,
+        fontSize: 19.2,
+        padding: 4.8,
     };
     return (
         <TouchableWithoutFeedback onPress={onPress}>
@@ -45,9 +49,24 @@ function BottomNavigationBar({ index, setIndex }) {
 export function Scaffold(props) {
     const [index, setIndex] = useState(0);
     return (
-        <View>
-            {index === 0 ? <HomePage /> : <CalendarPage />}
-            <BottomNavigationBar index={index} setIndex={setIndex} />
+        <View style={styles.container}>
+            <View style={styles.contentContainer}>
+                {index === 0 ? <HomePage /> : <CalendarPage />}
+            </View>
+            <View>
+                <BottomNavigationBar index={index} setIndex={setIndex} />
+            </View>
         </View>
     );
 }
+
+var styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        height: vh(100),
+        backgroundColor: "black",
+    },
+    contentContainer: {
+        flex: 1
+    }
+});
