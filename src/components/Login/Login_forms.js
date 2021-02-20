@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12
     },
     text: {
-        padding: "10px",
+        padding: 10,
         fontFamily: 'Garamond',
         color: 'beige',
     },

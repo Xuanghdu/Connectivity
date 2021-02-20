@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     },
     text: {
         margin: "10px",
-        padding: "10px",
+        padding: 10,
         fontFamily: 'Garamond',
         color: 'beige',
     }
