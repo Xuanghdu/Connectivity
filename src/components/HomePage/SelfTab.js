@@ -73,6 +73,7 @@ export function SelfTab({ personalGoals, usefulContent }) {
         usefulContent = [];
         for (let i = 0; i < 19; ++i)
             usefulContent.push({
+                id: i.toString(),
                 title: "Bla bla bla " + i,
                 imageUri: "https://reactnative.dev/img/tiny_logo.png",
             });
@@ -98,8 +99,11 @@ export function SelfTab({ personalGoals, usefulContent }) {
             <SectionTitle>Useful Content</SectionTitle>
             <View style={usefulContentContainerStyle}>
                 {
-                    usefulContent.map(({ title, imageUri }) => {
-                        return <UsefulContentCard title={title} imageUri={imageUri} />;
+                    usefulContent.map(({ id, title, imageUri }) => {
+                        return <UsefulContentCard
+                            key={id}
+                            title={title}
+                            imageUri={imageUri} />;
                     })
                 }
             </View>
