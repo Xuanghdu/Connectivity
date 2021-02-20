@@ -7,8 +7,8 @@ export function SectionTitle({ children }) {
     const style = {
         color: colorTheme.accent,
         fontFamily: "Lucida Console, Courier, monospace",
-        fontSize: "1.2rem",
-        marginVertical: ".3rem",
+        fontSize: 19.2,
+        marginVertical: 4.8,
     };
     return <Text style={style}>{children}</Text>;
 }
@@ -17,8 +17,8 @@ export function SectionDivider() {
     const colorTheme = useContext(ColorThemeContext);
     const style = {
         borderColor: colorTheme.divider,
-        borderWidth: "1px",
-        marginVertical: "2rem",
+        borderWidth: 1,
+        marginVertical: 32,
     };
     return <View style={style} />
 }

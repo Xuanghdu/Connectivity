@@ -10,23 +10,23 @@ function PersonalGoalTile({ index, children, progress }) {
     const lightness = 65 - 35 * progress;
     const viewStyle = {
         backgroundColor: `hsl(0, ${saturation}%, ${lightness}%)`,
-        borderRadius: ".6rem",
+        borderRadius: 9.6,
         display: "flex",
         flexDirection: "row",
-        padding: ".3rem",
-        marginVertical: ".3rem",
+        padding: 4.8,
+        marginVertical: 4.8,
     };
     const indexStyle = {
         color: colorTheme.tileText,
-        fontSize: "1.1rem",
+        fontSize: 17.6,
         fontWeight: "bold",
-        marginHorizontal: ".3rem",
-        minWidth: "1.5em",
+        marginHorizontal: 4.8,
+        minWidth: 24,
     };
     const contentStyle = {
         color: colorTheme.tileText,
-        fontSize: "1.1rem",
-        marginHorizontal: ".3rem",
+        fontSize: 17.6,
+        marginHorizontal: 4.8,
     };
     return (
         <View style={viewStyle}>
@@ -40,19 +40,19 @@ function UsefulContentCard({ title, imageUri }) {
     const colorTheme = useContext(ColorThemeContext);
     const viewStyle = {
         backgroundColor: `hsl(${Math.random() * 360}, 50%, 50%)`,
-        borderRadius: ".6rem",
-        margin: ".6rem",
+        borderRadius: 9.6,
+        margin: 9.6,
     };
     const imageStyle = {
-        borderTopLeftRadius: ".6rem",
-        borderTopRightRadius: ".6rem",
+        borderTopLeftRadius: 9.6,
+        borderTopRightRadius: 9.6,
         width: "100%",
-        height: "10rem",
+        height: 160,
     };
     const textStyle = {
         color: colorTheme.cardText,
-        fontSize: "1rem",
-        margin: ".6rem",
+        fontSize: 16,
+        margin: 9.6,
     };
     return (
         <View style={viewStyle}>
