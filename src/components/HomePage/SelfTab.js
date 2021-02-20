@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { FlatList, Image, Text, View } from 'react-native';
 import { SectionDivider, SectionTitle } from './Commons';
 import { ColorThemeContext } from '../../contexts/ColorThemeContext';
-import Grid from 'react-native-grid-component';
+import { FlatGrid } from 'react-native-super-grid';
 
 function PersonalGoalTile({ index, children, progress }) {
     const colorTheme = useContext(ColorThemeContext);
@@ -41,7 +41,6 @@ function UsefulContentCard({ title, imageUri }) {
     const viewStyle = {
         backgroundColor: `hsl(${Math.random() * 360}, 50%, 50%)`,
         borderRadius: ".6rem",
-        flex: 1,
         margin: ".6rem",
     };
     const imageStyle = {
@@ -91,8 +90,8 @@ export function SelfTab({ personalGoals, usefulContent }) {
             </PersonalGoalTile>
         );
     };
-    const usefulContentRenderItem = ({ id, title, imageUri }) => {
-        return <UsefulContentCard title={title} imageUri={imageUri} />
+    const usefulContentRenderItem = ({ item }) => {
+        return <UsefulContentCard title={item.title} imageUri={item.imageUri} />
     };
     return (
         <View>
@@ -103,9 +102,9 @@ export function SelfTab({ personalGoals, usefulContent }) {
                 keyExtractor={item => item.id} />
             <SectionDivider />
             <SectionTitle>Useful Content</SectionTitle>
-            <Grid
+            <FlatGrid
+                itemDimension={200}
                 data={usefulContent}
-                numColumns={4}
                 renderItem={usefulContentRenderItem}
                 keyExtractor={item => item.id} />
         </View>
