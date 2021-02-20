@@ -111,13 +111,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 12
     },
-    empty_button: {
-        elevation: 8,
-        backgroundColor: "#12112",
-        borderRadius: 10,
-        paddingVertical: 10,
-        paddingHorizontal: 12
-    },
+
     text: {
         padding: 10,
         // fontFamily: 'Garamond, Droid Serif, serif',
