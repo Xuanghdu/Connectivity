@@ -3,11 +3,13 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Welcome } from './src/components/Welcome';
 import { Me } from './src/components/Me';
+import { Login } from './src/components/Login/Login'
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Welcome />
+      {/* <Welcome /> */}
+      <Login />
       <StatusBar style="auto" />
     </View>
   );
