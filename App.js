@@ -2,7 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Me } from './src/components/MePage/Me';
-import { LargeImg } from './src/components/MePage/LargeImg';
 import { Login_screen } from './src/components/Login/Login_sreen'
 import { Register_screen } from './src/components/Login/Register_screen'
 import { Splash } from './src/components/Login/Splash'
@@ -39,7 +38,6 @@ export default class App extends Component {
           <Stack.Screen name="Register" component={Register_screen} /> */}
           <Stack.Screen name="Scaffold" component={Scaffold} />
           <Stack.Screen name="Me" component={Me} />
-          <Stack.Screen name="LargeImg" component={LargeImg} />
 
 
         </Stack.Navigator>
