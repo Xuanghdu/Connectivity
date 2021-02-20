@@ -3,7 +3,7 @@ import { Text, TouchableWithoutFeedback, View, StyleSheet } from 'react-native';
 import { ColorThemeContext } from "../../contexts/ColorThemeContext";
 import { HomePage } from '../HomePage/HomePage';
 import { CalendarPage } from '../CalendarPage/CalendarPage';
-import { Me } from '../Me';
+import { Me } from '../MePage/Me';
 import { vw, vh, vmin, vmax } from 'react-native-expo-viewport-units';
 
 function BottomNavigationItem({ selected, onPress, children }) {
