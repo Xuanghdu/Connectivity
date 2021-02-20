@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, Button, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, TouchableOpacity, TextInput, Alert } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-export const Me = (props) => {
-    const [url, setUrl] = useState('https://reactnative.dev/img/tiny_logo.png');
+export const Me = (props, url) => {
+    if (true)  {
+        url = [];
+        for (let i = 1; i < 9; ++i) {
+            url[i] = '../../../img/jpg/'+i.toString()+'.jpg';
+        }
+    }
     const [style, setStyle] = useState(styles.postcardSmall);
-    const large = () => {
-        setUrl('https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F042d50d2-3686-4d79-91bf-9489df4a4ed1%2Flogo.jpg?table=block&id=220c701d-1403-4944-b303-ff6e4b3e9678&width=250&userId=&cache=v2');
-        setStyle(styles.postcardLarge)
+    // const large = (i) => {
+        const large = () => {
+        // Alert.alert(i.toString);
+        setStyle(styles.postcardLarge);
     }
     const GoalInput = () => {
         const [value, onChangeText] = React.useState('');
@@ -75,17 +81,16 @@ export const Me = (props) => {
             <TouchableOpacity activeOpacity={.5} onPress={() => large()}>
                 <Image
                     style={style}
-                    source={{
-                        uri: url,
-                    }}
-                />
-                <Image
-                    style={style}
-                    source={{
-                        uri: url,
-                    }}
+                    // source={require('../../../img/jpg/1.jpg')}
+                    source={require(url[1])}
                 />
             </TouchableOpacity>
+            {/* <TouchableOpacity activeOpacity={.5} onPress={() => large()}>
+                <Image
+                    style={style}
+                    source={require(url[2])}
+                />
+            </TouchableOpacity> */}
         </View>
     );
 }

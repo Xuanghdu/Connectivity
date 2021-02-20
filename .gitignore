@@ -63,3 +63,4 @@ buck-out/
 .expo/*
 web-build/
 .vscode/settings.json
+.vscode/launch.json
