@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 
 export const Me = (props) => {
     return (
+        <View style={styles.top}>
         <View style={styles.row}>
         <View style={styles.container}>
             <Image
@@ -21,17 +22,20 @@ export const Me = (props) => {
             <Text style={styles.text}>Contact: {props.contact}</Text>
         </View>
         </View>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
+    top: {
+        backgroundColor: '#121212',
+    },
     row: {
         flexDirection: "row",
     },
     container: {
         margin: '10px',
         flex: 1,
-        backgroundColor: '#121212',
         alignItems: 'left',
         justifyContent: 'center',
     },
