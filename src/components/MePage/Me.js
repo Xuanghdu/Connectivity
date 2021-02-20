@@ -79,6 +79,12 @@ export const Me = (props) => {
                         uri: url,
                     }}
                 />
+                <Image
+                    style={style}
+                    source={{
+                        uri: url,
+                    }}
+                />
             </TouchableOpacity>
         </View>
     );
