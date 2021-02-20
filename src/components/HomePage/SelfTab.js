@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { FlatList, Image, Text, View } from 'react-native';
-import { SectionDivider, SectionTitle } from './Commons'
-import { ColorThemeContext } from '../../contexts/ColorThemeContext'
+import { SectionDivider, SectionTitle } from './Commons';
+import { ColorThemeContext } from '../../contexts/ColorThemeContext';
+import Grid from 'react-native-grid-component';
 
 function PersonalGoalTile({ index, children, progress }) {
     const colorTheme = useContext(ColorThemeContext);
@@ -40,18 +41,18 @@ function UsefulContentCard({ title, imageUri }) {
     const viewStyle = {
         backgroundColor: `hsl(${Math.random() * 360}, 50%, 50%)`,
         borderRadius: ".6rem",
-        width: "12rem",
-        height: "12rem",
+        flex: 1,
         margin: ".6rem",
     };
     const imageStyle = {
         borderTopLeftRadius: ".6rem",
         borderTopRightRadius: ".6rem",
-        width: "12rem",
-        height: "8rem",
+        width: "100%",
+        height: "10rem",
     };
     const textStyle = {
         color: colorTheme.cardText,
+        fontSize: "1rem",
         margin: ".6rem",
     };
     return (
@@ -90,11 +91,8 @@ export function SelfTab({ personalGoals, usefulContent }) {
             </PersonalGoalTile>
         );
     };
-    const usefulContentContainerStyle = {
-        display: "flex",
-        flexDirection: "row",
-        flexWrap: "wrap",
-        justifyContent: "space-between",
+    const usefulContentRenderItem = ({ id, title, imageUri }) => {
+        return <UsefulContentCard title={title} imageUri={imageUri} />
     };
     return (
         <View>
@@ -105,16 +103,11 @@ export function SelfTab({ personalGoals, usefulContent }) {
                 keyExtractor={item => item.id} />
             <SectionDivider />
             <SectionTitle>Useful Content</SectionTitle>
-            <View style={usefulContentContainerStyle}>
-                {
-                    usefulContent.map(({ id, title, imageUri }) => {
-                        return <UsefulContentCard
-                            key={id}
-                            title={title}
-                            imageUri={imageUri} />;
-                    })
-                }
-            </View>
+            <Grid
+                data={usefulContent}
+                numColumns={4}
+                renderItem={usefulContentRenderItem}
+                keyExtractor={item => item.id} />
         </View>
     );
 }
