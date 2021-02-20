@@ -18,8 +18,8 @@ export function SectionDivider() {
     const colorTheme = useContext(ColorThemeContext);
     const style = {
         borderColor: colorTheme.divider,
-        borderWidth: 1,
-        margin: ".6rem",
+        borderWidth: "1px",
+        marginVertical: "2rem",
     };
     return <View style={style} />
 }
