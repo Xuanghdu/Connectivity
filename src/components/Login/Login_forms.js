@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     },
     img: {
         width: 100,
-        heigh: 100,
+        height: 100,
     },
     input: {
         height: '10%',
