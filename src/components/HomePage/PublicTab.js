@@ -48,7 +48,7 @@ export function PublicTab(usefulContent) {
         <View>
             <SectionTitle>Userful Contents from public</SectionTitle>
             <FlatGrid
-                itemDimension={200}
+                itemDimension={100}
                 data={usefulContent}
                 renderItem={usefulContentRenderItem}
                 keyExtractor={item => item.id} />
