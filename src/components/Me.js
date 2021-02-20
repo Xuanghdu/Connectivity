@@ -1,11 +1,32 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, TouchableOpacity, TextInput } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 
 export const Me = (props) => {
     const [url, setUrl] = useState('https://reactnative.dev/img/tiny_logo.png');
+    const [style, setStyle] = useState(styles.postcardSmall);
     const large = () => {
-        setUrl('https://reactnative.dev/img/header_logo.svg');
+        setUrl('https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F042d50d2-3686-4d79-91bf-9489df4a4ed1%2Flogo.jpg?table=block&id=220c701d-1403-4944-b303-ff6e4b3e9678&width=250&userId=&cache=v2');
+        setStyle(styles.postcardLarge)
     }
+    const GoalInput = () => {
+        const [value, onChangeText] = React.useState('');
+        return (
+            <TextInput
+                style={{
+                    height: 40, borderColor: 'gray', borderWidth: 1,
+                    fontSize: 14,
+                    backgroundColor: 'rgba(255,255,255,0.7)',
+                    marginBottom: 10,
+                    padding: "1%",
+                }}
+                placeholder='My Grand New Goal'
+                onChangeText={text => onChangeText(text)}
+                value={value}
+            />
+        );
+    }
+    const [selectedValue, setSelectedValue] = useState("No. Leave me alone.");
     return (
         <View style={styles.top}>
             <Text style={styles.header}>Personal Profile</Text>
@@ -29,17 +50,31 @@ export const Me = (props) => {
             </View>
             <Text style={styles.header}>Set A New Goal</Text>
             <Text style={styles.text}>Describe your new goal here:</Text>
+            <GoalInput></GoalInput>
             <Text style={styles.text}>Do you want to invite others?</Text>
+            <Picker
+                selectedValue={selectedValue}
+                style={{
+                    height: 40,
+                    fontSize: 14,
+                    backgroundColor: 'rgba(255,255,255,0.7)',
+                    marginBottom: 10
+                }}
+                onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+            >
+                <Picker.Item label="No. Leave me alone." value="0" />
+                <Picker.Item label="Sure Yes! I want to invite my friends!" value="1" />
+                <Picker.Item label="Sure Yes! Make it public!" value="2" />
+            </Picker>
             <Button
                 onPress={SetGoal}
                 title="Set Your Goal"
                 color="#841584"
-                accessibilityLabel="Learn more about this purple button"
             />
             <Text style={styles.header}>Achievements</Text>
-            <TouchableOpacity activeOpacity={.5} onPress={()=>large()}>
+            <TouchableOpacity activeOpacity={.5} onPress={() => large()}>
                 <Image
-                    style={styles.postcardSmall}
+                    style={style}
                     source={{
                         uri: url,
                     }}
@@ -50,30 +85,6 @@ export const Me = (props) => {
 }
 
 const SetGoal = () => { }
-
-function callFun() {
-    return (
-        <View>
-            <Image
-                style={styles.postcardBig}
-                source={{
-                    uri: 'https://reactnative.dev/img/header_logo.svg',
-                }}
-            />
-        </View>
-    );
-}
-
-const UselessTextInput = () => {
-    const [value, onChangeText] = React.useState('Useless Placeholder');
-    return (
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-        onChangeText={text => onChangeText(text)}
-        value={value}
-      />
-    );
-  }
 
 const styles = StyleSheet.create({
     top: {
@@ -103,7 +114,7 @@ const styles = StyleSheet.create({
         width: 160,
         height: 90,
     },
-    postcardBig: {
+    postcardLarge: {
         width: 320,
         height: 180,
     },
