@@ -42,6 +42,7 @@ const SetGoal = () => { }
 const styles = StyleSheet.create({
     top: {
         backgroundColor: '#121212',
+        padding: 20,
     },
     row: {
         flexDirection: "row",
