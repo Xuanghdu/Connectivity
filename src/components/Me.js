@@ -10,12 +10,12 @@ export const Me = (props) => {
                     uri: 'https://reactnative.dev/img/tiny_logo.png',
                 }}
             />
-            <Text>USERNAME: {props.username}</Text>
-            <Text>Name: {props.name}</Text>
-            <Text>Date of Birth: {props.dob}</Text>
-            <Text>Gender: {props.gender}</Text>
-            <Text>Country/Region: {props.nat}</Text>
-            <Text>Contact: {props.contact}</Text>
+            <Text style={styles.text}>USERNAME: {props.username}</Text>
+            <Text style={styles.text}>Name: {props.name}</Text>
+            <Text style={styles.text}>Date of Birth: {props.dob}</Text>
+            <Text style={styles.text}>Gender: {props.gender}</Text>
+            <Text style={styles.text}>Country/Region: {props.nat}</Text>
+            <Text style={styles.text}>Contact: {props.contact}</Text>
         </View>
     );
 }
@@ -23,12 +23,17 @@ export const Me = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'grey',
+        backgroundColor: '#121212',
         alignItems: 'center',
         justifyContent: 'center',
     },
     avatar: {
-      width: 50,
-      height: 50,
+        width: 50,
+        height: 50,
     },
+    text: {
+        fontFamily: 'Garamond',
+        // fontWeight: 'bold',
+        color: 'white',
+    }
 });
