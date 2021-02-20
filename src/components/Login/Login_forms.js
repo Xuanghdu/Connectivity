@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button, Image, TextInput } from 'react-native';
+import { cos } from 'react-native-reanimated';
 
 
 
@@ -12,16 +13,21 @@ export class Login_forms extends React.Component {
 
                 <TextInput
                     placeholder='Username'
+                    returnKeyType='next'
                     style={styles.input}
+                    onSubmitEditing={() => this.logininfo.focus()}
                 />
                 <TextInput
                     placeholder='Password'
+                    returnKeyType='go'
                     secureTextEntry
                     style={styles.input}
+                    ref={(password) => this.logininfo = (password)}
                 />
                 <Button
                     title='Login'
                     style={styles.button}
+                    onPress={() => console.log(this.logininfo)}
                 />
             </View >
 
