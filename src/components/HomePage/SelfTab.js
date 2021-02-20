@@ -3,10 +3,12 @@ import { FlatList, Image, Text, View } from 'react-native';
 import { SectionDivider, SectionTitle } from './Commons'
 import { ColorThemeContext } from '../../contexts/ColorThemeContext'
 
-function PersonalGoalTile({ index, children }) {
+function PersonalGoalTile({ index, children, progress }) {
     const colorTheme = useContext(ColorThemeContext);
+    const saturation = 70 - 10 * progress;
+    const lightness = 65 - 35 * progress;
     const viewStyle = {
-        backgroundColor: colorTheme.tileBackground,
+        backgroundColor: `hsl(0, ${saturation}%, ${lightness}%)`,
         borderRadius: ".6rem",
         display: "flex",
         flexDirection: "row",
@@ -35,7 +37,7 @@ function PersonalGoalTile({ index, children }) {
 function UsefulContentCard({ title, imageUri }) {
     const colorTheme = useContext(ColorThemeContext);
     const viewStyle = {
-        backgroundColor: colorTheme.cardBackground,
+        backgroundColor: `hsl(${Math.random() * 360}, 50%, 50%)`,
         borderRadius: ".6rem",
         width: "12rem",
         height: "12rem",
@@ -80,7 +82,12 @@ export function SelfTab({ personalGoals, usefulContent }) {
     }
 
     const personalGoalsRenderItem = ({ item, index }) => {
-        return <PersonalGoalTile index={index}>{item.content}</PersonalGoalTile>;
+        const progress = index / (personalGoals.length - 1);
+        return (
+            <PersonalGoalTile index={index} progress={progress}>
+                {item.content}
+            </PersonalGoalTile>
+        );
     };
     const usefulContentContainerStyle = {
         display: "flex",
