@@ -20,6 +20,7 @@ function PersonalGoalTile({ index, children, progress }) {
         fontSize: "1.1rem",
         fontWeight: "bold",
         marginHorizontal: ".3rem",
+        minWidth: "1.5em",
     };
     const contentStyle = {
         color: colorTheme.tileText,
@@ -28,7 +29,7 @@ function PersonalGoalTile({ index, children, progress }) {
     };
     return (
         <View style={viewStyle}>
-            <Text style={indexStyle}>{index + 1}</Text>
+            <Text style={indexStyle}>{index + 1 + "."}</Text>
             <Text style={contentStyle}>{children}</Text>
         </View>
     );
@@ -64,7 +65,7 @@ function UsefulContentCard({ title, imageUri }) {
 export function SelfTab({ personalGoals, usefulContent }) {
     if (true) {
         personalGoals = [];
-        for (let i = 0; i < 9; ++i)
+        for (let i = 0; i < 12; ++i)
             personalGoals.push({
                 id: i.toString(),
                 content: 'goal ' + (i + 1),
