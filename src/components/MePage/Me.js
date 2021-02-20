@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, Button, TouchableOpacity, TextInput, Alert } from 'react-native';
+import { FlatList, StyleSheet, Text, View, Image, Button, TouchableOpacity, TextInput, Alert } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-export const Me = (props, url) => {
-    if (true)  {
-        url = [];
-        for (let i = 1; i < 9; ++i) {
-            url[i] = '../../../img/jpg/'+i.toString()+'.jpg';
-        }
+export const Me = (props) => {
+    const images = {
+        "1": require('../../../img/jpg/1.jpg'),
+        "2": require('../../../img/jpg/2.jpg'),
+        "3": require('../../../img/jpg/3.jpg'),
+        "4": require('../../../img/jpg/4.jpg'),
+        "5": require('../../../img/jpg/5.jpg'),
+        "6": require('../../../img/jpg/6.jpg'),
+        "7": require('../../../img/jpg/7.jpg'),
+        "8": require('../../../img/jpg/8.jpg'),
     }
+    // if (true) {
+    //     url = [];
+    //     for (let i = 0; i < 8; ++i) {
+    //         url.push({
+    //             id: i.toString(),
+    //             // src: require('../../../img/jpg/' + (i + 1) + '.jpg'),
+    //         });
+    //     }
+    // }
     const [style, setStyle] = useState(styles.postcardSmall);
     // const large = (i) => {
-        const large = () => {
+    const large = () => {
         // Alert.alert(i.toString);
         setStyle(styles.postcardLarge);
     }
@@ -33,6 +46,12 @@ export const Me = (props, url) => {
         );
     }
     const [selectedValue, setSelectedValue] = useState("No. Leave me alone.");
+    const data = ["1","2","3","4","5", "6","7","8"];
+    const renderItem = ({item}) => (
+        <View>
+            <Image source={images[item]}/>
+        </View>
+    );
     return (
         <View style={styles.top}>
             <Text style={styles.header}>Personal Profile</Text>
@@ -78,13 +97,28 @@ export const Me = (props, url) => {
                 color="#841584"
             />
             <Text style={styles.header}>Achievements</Text>
-            <TouchableOpacity activeOpacity={.5} onPress={() => large()}>
+            <FlatList data={data} renderItem={renderItem}/>
+
+
+            {/* <FlatList
+                data={url}
+                keyExtractor={item => item.id}
+                renderItem={({ item }) => (
+                    <View>
+                        <TouchableOpacity activeOpacity={.5} onPress={() => large()}>
+                            <Image style={style} source={item.src} />
+                        </TouchableOpacity>
+                    </View>
+                )}
+            /> */}
+
+            {/* <TouchableOpacity activeOpacity={.5} onPress={() => large()}>
                 <Image
                     style={style}
                     // source={require('../../../img/jpg/1.jpg')}
-                    source={require(url[1])}
+                    source={require("" + url[1])}
                 />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             {/* <TouchableOpacity activeOpacity={.5} onPress={() => large()}>
                 <Image
                     style={style}
