@@ -75,8 +75,10 @@ export class Login_forms extends React.Component {
                     onPress={this.interchange}
                 />
                 <View style={styles.text}>
-                    {this.state.username}
-                    {this.state.password}
+                    <Text>
+                        {this.state.username}
+                        {this.state.password}
+                    </Text>
                 </View>
             </View >
 
