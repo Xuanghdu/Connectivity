@@ -3,10 +3,12 @@ import { FlatList, Image, Text, View } from 'react-native';
 import { SectionDivider, SectionTitle } from './Commons'
 import { ColorThemeContext } from '../../contexts/ColorThemeContext'
 
-function PersonalGoalTile({ index, children }) {
+function PersonalGoalTile({ index, children, progress }) {
     const colorTheme = useContext(ColorThemeContext);
+    const saturation = 70 - 10 * progress;
+    const lightness = 65 - 35 * progress;
     const viewStyle = {
-        backgroundColor: colorTheme.tileBackground,
+        backgroundColor: `hsl(0, ${saturation}%, ${lightness}%)`,
         borderRadius: ".6rem",
         display: "flex",
         flexDirection: "row",
@@ -35,7 +37,7 @@ function PersonalGoalTile({ index, children }) {
 function UsefulContentCard({ title, imageUri }) {
     const colorTheme = useContext(ColorThemeContext);
     const viewStyle = {
-        backgroundColor: colorTheme.cardBackground,
+        backgroundColor: `hsl(${Math.random() * 360}, 50%, 50%)`,
         borderRadius: ".6rem",
         width: "12rem",
         height: "12rem",
@@ -73,13 +75,19 @@ export function SelfTab({ personalGoals, usefulContent }) {
         usefulContent = [];
         for (let i = 0; i < 19; ++i)
             usefulContent.push({
+                id: i.toString(),
                 title: "Bla bla bla " + i,
                 imageUri: "https://reactnative.dev/img/tiny_logo.png",
             });
     }
 
     const personalGoalsRenderItem = ({ item, index }) => {
-        return <PersonalGoalTile index={index}>{item.content}</PersonalGoalTile>;
+        const progress = index / (personalGoals.length - 1);
+        return (
+            <PersonalGoalTile index={index} progress={progress}>
+                {item.content}
+            </PersonalGoalTile>
+        );
     };
     const usefulContentContainerStyle = {
         display: "flex",
@@ -98,8 +106,11 @@ export function SelfTab({ personalGoals, usefulContent }) {
             <SectionTitle>Useful Content</SectionTitle>
             <View style={usefulContentContainerStyle}>
                 {
-                    usefulContent.map(({ title, imageUri }) => {
-                        return <UsefulContentCard title={title} imageUri={imageUri} />;
+                    usefulContent.map(({ id, title, imageUri }) => {
+                        return <UsefulContentCard
+                            key={id}
+                            title={title}
+                            imageUri={imageUri} />;
                     })
                 }
             </View>
