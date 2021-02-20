@@ -15,7 +15,7 @@ export const Me = (props) => {
                     />
                 </View>
                 <View style={styles.container}>
-                    <Text style={styles.field}>USERNAME: {props.username}</Text>
+                    <Text style={styles.field}>Username: {props.username}</Text>
                     <Text style={styles.field}>Name: {props.name}</Text>
                     <Text style={styles.field}>Date of Birth: {props.dob}</Text>
                     <Text style={styles.field}>Gender: {props.gender}</Text>
@@ -62,8 +62,9 @@ function callFun() {
 
 const styles = StyleSheet.create({
     top: {
-        backgroundColor: '#121212',
+        backgroundColor: "black",
         padding: 20,
+        marginVertical: 10,
     },
     row: {
         flexDirection: "row",
@@ -71,6 +72,7 @@ const styles = StyleSheet.create({
     header: {
         color: 'chocolate',
         fontWeight: 'bold',
+        fontSize: 19.2,
     },
     container: {
         margin: 10,
