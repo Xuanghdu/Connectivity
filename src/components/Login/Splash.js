@@ -1,7 +1,6 @@
 import React from 'react';
 import {
     StyleSheet,
-    Text,
     View,
     Image,
     KeyboardAvoidingView
@@ -9,6 +8,16 @@ import {
 import { Login_forms } from './Login_forms'
 
 export class Splash extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.props.navigation.navigate('Login');
+        }, 1000);
+    }
+
     render() {
         return (
             <KeyboardAvoidingView behavior='padding' style={styles.container}>

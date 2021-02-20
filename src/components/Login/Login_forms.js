@@ -56,31 +56,24 @@ export class Login_forms extends React.Component {
                     returnKeyType='next'
                     style={styles.input}
                     onChangeText={(username) => this.onChangeText('username', username)}
-                // onSubmitEditing={() => this.logininfo.focus()}
                 />
                 <TextInput
                     placeholder='Password'
                     returnKeyType='go'
                     secureTextEntry
                     style={styles.input}
-                    // ref={(password) => this.logininfo = (password)}
                     onChangeText={(password) => this.onChangeText('password', password)}
                 />
-                {/* <View style={styles}> */}
                 <Button
                     title={this.props.usage}
-                    style={styles.button}
                     onPress={this.submit}
                 />
-                < TouchableOpacity >
-                    <Text
-                        style={styles.text}
-                        onPress={this.interchange}
-                    >
-                        {this.props.usage === 'Login' ? 'Register' : 'Login'}
-                    </Text>
-                </ TouchableOpacity>
-                {/* </View> */}
+
+                <Button
+                    title={this.props.usage === 'Login' ? 'Register' : 'Login'}
+                    color='#121212'
+                    onPress={this.interchange}
+                />
                 <View style={styles.text}>
                     {this.state.username}
                     {this.state.password}
@@ -114,6 +107,13 @@ const styles = StyleSheet.create({
     button: {
         elevation: 8,
         backgroundColor: "#009688",
+        borderRadius: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 12
+    },
+    empty_button: {
+        elevation: 8,
+        backgroundColor: "#12112",
         borderRadius: 10,
         paddingVertical: 10,
         paddingHorizontal: 12
