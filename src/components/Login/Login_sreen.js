@@ -1,0 +1,61 @@
+import React from 'react';
+import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import { Login_forms } from './Login_forms'
+
+export class Login_screen extends React.Component {
+    render() {
+        return (
+            <View style={styles.container}>
+                <View style={styles.avatar_container}>
+                    <Image
+                        style={styles.avatar}
+                        source={{
+                            uri: 'https://reactnative.dev/img/tiny_logo.png',
+                        }}
+                    />
+                </View>
+                <View style={styles.form_container}>
+                    <Login_forms />
+                </View>
+            </View>
+        );
+    }
+}
+
+
+const styles = StyleSheet.create({
+
+    header: {
+        color: 'chocolate',
+        fontWeight: 'bold',
+    },
+    container: {
+        backgroundColor: '#121212',
+        margin: '10px',
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'bottom',
+    },
+    avatar: {
+        width: 100,
+        height: 100,
+    },
+    avatar_container: {
+        flex: 0.5,
+        flexGrow: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    form_container: {
+        flex: 1,
+        flexGrow: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    text: {
+        margin: "10px",
+        padding: "10px",
+        fontFamily: 'Garamond',
+        color: 'beige',
+    }
+});
