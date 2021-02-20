@@ -8,7 +8,7 @@ import { Splash } from './src/components/Login/Splash'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationActions } from "react-navigation";
-// import { HomePage } from './src/components/HomePage/HomePage';
+import { HomePage } from './src/components/HomePage/HomePage';
 
 
 
@@ -37,8 +37,10 @@ export default class App extends Component {
       <NavigationContainer screenOptions={screenOptions}>
         <Stack.Navigator screenOptions={screenOptions}>
           {/* <Stack.Screen name="Splash" component={Splash} /> */}
+
           <Stack.Screen name="Login" component={Login_screen} />
           <Stack.Screen name="Register" component={Register_screen} />
+          <Stack.Screen name="HomePage" component={HomePage} />
 
         </Stack.Navigator>
       </NavigationContainer >

@@ -35,7 +35,13 @@ export class Login_forms extends React.Component {
                 username: '',
                 password: ''
             })
+            this.props.navigation.navigate('HomePage');
         }
+    }
+    interchange = () => {
+        this.props.usage === 'Login' ?
+            navigation.navigate('Register') :
+            navigation.navigate('Login')
     }
 
     render() {
@@ -64,16 +70,12 @@ export class Login_forms extends React.Component {
                 <Button
                     title={this.props.usage}
                     style={styles.button}
-                // onPress={}
+                    onPress={this.submit}
                 />
                 < TouchableOpacity >
                     <Text
                         style={styles.text}
-                        onPress={
-                            () => this.props.usage === 'Login' ?
-                                navigation.navigate('Register') :
-                                navigation.navigate('Login')
-                        }
+                        onPress={this.interchange}
                     >
                         {this.props.usage === 'Login' ? 'Register' : 'Login'}
                     </Text>
