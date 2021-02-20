@@ -13,19 +13,10 @@ export const Me = (props) => {
         "7": require('../../../img/jpg/7.jpg'),
         "8": require('../../../img/jpg/8.jpg'),
     }
-    // if (true) {
-    //     url = [];
-    //     for (let i = 0; i < 8; ++i) {
-    //         url.push({
-    //             id: i.toString(),
-    //             // src: require('../../../img/jpg/' + (i + 1) + '.jpg'),
-    //         });
-    //     }
-    // }
+
     const [style, setStyle] = useState(styles.postcardSmall);
-    // const large = (i) => {
-    const large = () => {
-        // Alert.alert(i.toString);
+    const large = (item) => {
+        Alert.alert(item);
         setStyle(styles.postcardLarge);
     }
     const GoalInput = () => {
@@ -49,11 +40,11 @@ export const Me = (props) => {
     const data = ["1", "2", "3", "4", "5", "6", "7", "8"];
     const renderItem = ({ item }) => (
         <View>
-            <TouchableOpacity activeOpacity={.5} onPress={() => large()}>
+            {/* <TouchableOpacity activeOpacity={.5} onPress={() => large(item)}> */}
                 <Image
                     style={style}
                     source={images[item]} />
-            </TouchableOpacity>
+            {/* </TouchableOpacity> */}
         </View>
     );
     return (
@@ -102,33 +93,6 @@ export const Me = (props) => {
             />
             <Text style={styles.header}>Achievements</Text>
             <FlatList data={data} renderItem={renderItem} />
-
-
-            {/* <FlatList
-                data={url}
-                keyExtractor={item => item.id}
-                renderItem={({ item }) => (
-                    <View>
-                        <TouchableOpacity activeOpacity={.5} onPress={() => large()}>
-                            <Image style={style} source={item.src} />
-                        </TouchableOpacity>
-                    </View>
-                )}
-            /> */}
-
-            {/* <TouchableOpacity activeOpacity={.5} onPress={() => large()}>
-                <Image
-                    style={style}
-                    // source={require('../../../img/jpg/1.jpg')}
-                    source={require("" + url[1])}
-                />
-            </TouchableOpacity> */}
-            {/* <TouchableOpacity activeOpacity={.5} onPress={() => large()}>
-                <Image
-                    style={style}
-                    source={require(url[2])}
-                />
-            </TouchableOpacity> */}
         </View>
     );
 }
