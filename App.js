@@ -9,6 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationActions } from "react-navigation";
 import { HomePage } from './src/components/HomePage/HomePage';
+import { Scaffold } from './src/components/Scaffold/Scaffold'
 
 
 
@@ -35,7 +36,7 @@ export default class App extends Component {
           <Stack.Screen name="Splash" component={Splash} />
           <Stack.Screen name="Login" component={Login_screen} />
           <Stack.Screen name="Register" component={Register_screen} />
-          <Stack.Screen name="HomePage" component={HomePage} />
+          <Stack.Screen name="Scaffold" component={Scaffold} />
           <Stack.Screen name="Me" component={Me} />
 
 
