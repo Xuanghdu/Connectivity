@@ -35,7 +35,7 @@ export class Login_forms extends React.Component {
                 username: '',
                 password: ''
             })
-            this.props.navigation.navigate('HomePage');
+            this.props.navigation.navigate('Scaffold');
         }
     }
     interchange = () => {
