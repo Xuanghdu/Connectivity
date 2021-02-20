@@ -39,6 +39,7 @@ export class Login_forms extends React.Component {
         }
     }
     interchange = () => {
+        const navigation = this.props.navigation;
         this.props.usage === 'Login' ?
             navigation.navigate('Register') :
             navigation.navigate('Login')
@@ -46,7 +47,6 @@ export class Login_forms extends React.Component {
 
     render() {
 
-        const navigation = this.props.navigation;
 
         return (
             <View style={styles.container}>

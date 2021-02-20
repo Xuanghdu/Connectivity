@@ -13,8 +13,6 @@ import { cos } from 'react-native-reanimated';
 
 export function Register_screen({ navigation }) {
 
-
-
     return (
         <KeyboardAvoidingView behavior='padding' style={styles.container}>
             <View style={styles.avatar_container}>
