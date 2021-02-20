@@ -21,7 +21,7 @@ function CalendarDayItem({ index }) {
         borderColor: colorTheme.accent,
         borderStyle: "solid",
         borderWidth: 2,
-        height: 160,
+        height: 65,
     };
     const indexStyle = {
         color: colorTheme.text,
@@ -61,7 +61,7 @@ export function CalendarPage({ days, month, year }) {
             <PageTitle>Calendar</PageTitle>
             <MonthTitle>{monthTitle}</MonthTitle>
             <FlatGrid
-                itemDimension={200}
+                itemDimension={66}
                 data={days}
                 renderItem={renderItem} />
         </ScrollView>
