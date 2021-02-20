@@ -4,15 +4,32 @@ import { StyleSheet, Text, View, Button, Image, TextInput } from 'react-native';
 import { cos } from 'react-native-reanimated';
 
 
-
 export class Login_forms extends React.Component {
     constructor() {
         super()
         this.state = {
-            input_value: '',
-            input_change: '',
+            username: '',
+            password: '',
         }
 
+    }
+    onChangeText = (key, value) => {
+        this.setState({ [key]: value })
+    }
+
+    submit = () => {
+        if (this.state.username === '' || this.state.password === '') {
+            alert('invalid username or password')
+        } else {
+            const account = {
+                username: this.state.username,
+                password: this.state.password,
+            }
+            this.setState({
+                username: '',
+                password: ''
+            })
+        }
     }
 
     render() {
@@ -23,6 +40,7 @@ export class Login_forms extends React.Component {
                     placeholder='Username'
                     returnKeyType='next'
                     style={styles.input}
+                    onChangeText={(username) => this.onChangeText('username', username)}
                     onSubmitEditing={() => this.logininfo.focus()}
                 />
                 <TextInput
@@ -31,12 +49,17 @@ export class Login_forms extends React.Component {
                     secureTextEntry
                     style={styles.input}
                     ref={(password) => this.logininfo = (password)}
+                    onChangeText={(password) => this.onChangeText('password', password)}
                 />
                 <Button
                     title='Login'
                     style={styles.button}
                     onPress={() => console.log(this.logininfo)}
                 />
+                <View style={styles.text}>
+                    {this.state.username}
+                    {this.state.password}
+                </View>
             </View >
 
         );
@@ -69,5 +92,11 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingVertical: 10,
         paddingHorizontal: 12
+    },
+    text: {
+        margin: "10px",
+        padding: "10px",
+        fontFamily: 'Garamond',
+        color: 'beige',
     }
 });
