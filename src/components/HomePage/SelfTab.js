@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, Image, Text, View } from 'react-native';
 import { SectionDivider, SectionTitle } from './Commons'
 import { ColorThemeContext } from '../../contexts/ColorThemeContext'
 
-function GoalItem({ index, children }) {
+function PersonalGoalTile({ index, children }) {
     const colorTheme = useContext(ColorThemeContext);
     const viewStyle = {
         backgroundColor: colorTheme.tileBackground,
@@ -32,39 +32,60 @@ function GoalItem({ index, children }) {
     );
 }
 
+function UsefulContentCard({ title, imageUri }) {
+    const colorTheme = useContext(ColorThemeContext);
+    const viewStyle = {
+        backgroundColor: colorTheme.cardBackground,
+        borderRadius: ".6rem",
+        width: "12rem",
+        height: "12rem",
+        margin: ".6rem",
+    };
+    const imageStyle = {
+        borderTopLeftRadius: ".6rem",
+        borderTopRightRadius: ".6rem",
+        width: "12rem",
+        height: "8rem",
+    };
+    const textStyle = {
+        color: colorTheme.cardText,
+        margin: ".6rem",
+    };
+    return (
+        <View style={viewStyle}>
+            <Image style={imageStyle} source={{ uri: imageUri }} />
+            <Text style={textStyle}>{title}</Text>
+        </View>
+    );
+}
+
 export function SelfTab({ personalGoals, usefulContent }) {
     if (true) {
-        personalGoals = [
-            {
-                id: 'a',
-                content: 'goal 1',
-            },
-            {
-                id: "b",
-                content: "goal 2",
-            },
-            {
-                id: "c",
-                content: "goal 3",
-            },
-            {
-                id: 'd',
-                content: 'goal 4',
-            },
-            {
-                id: "e",
-                content: "goal 5",
-            },
-            {
-                id: "f",
-                content: "goal 6",
-            },
-        ];
+        personalGoals = [];
+        for (let i = 0; i < 9; ++i)
+            personalGoals.push({
+                id: i.toString(),
+                content: 'goal ' + (i + 1),
+            });
     }
 
-    personalGoals = personalGoals ?? [];
+    if (true) {
+        usefulContent = [];
+        for (let i = 0; i < 19; ++i)
+            usefulContent.push({
+                title: "Bla bla bla " + i,
+                imageUri: "https://reactnative.dev/img/tiny_logo.png",
+            });
+    }
+
     const personalGoalsRenderItem = ({ item, index }) => {
-        return <GoalItem index={index}>{item.content}</GoalItem>;
+        return <PersonalGoalTile index={index}>{item.content}</PersonalGoalTile>;
+    };
+    const usefulContentContainerStyle = {
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "space-between",
     };
     return (
         <View>
@@ -75,6 +96,13 @@ export function SelfTab({ personalGoals, usefulContent }) {
                 keyExtractor={item => item.id} />
             <SectionDivider />
             <SectionTitle>Useful Content</SectionTitle>
+            <View style={usefulContentContainerStyle}>
+                {
+                    usefulContent.map(({ title, imageUri }) => {
+                        return <UsefulContentCard title={title} imageUri={imageUri} />;
+                    })
+                }
+            </View>
         </View>
     );
 }
