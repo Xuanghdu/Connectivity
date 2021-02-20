@@ -1,18 +1,49 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Me } from './src/components/Me';
 import { Login_screen } from './src/components/Login/Login_sreen'
+import { Register_screen } from './src/components/Login/Register_screen'
+import { Splash } from './src/components/Login/Splash'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationActions } from "react-navigation";
+// import { HomePage } from './src/components/HomePage/HomePage';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      {/* <Welcome /> */}
-      <Login_screen />
-      {/* <Me /> */}
-      <StatusBar style="auto" />
-    </View>
-  );
+
+
+// setTimeout(() => {
+//   navigate('Splash'); //this.props.navigation.navigate('Login')
+// }, 5000);  //5000 milliseconds
+
+
+export default class App extends Component {
+
+  constructor(props) {
+    super(props)
+
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      NavigationActions.navigate('Splash');
+    }, 1000);
+  }
+
+  render() {
+    const Stack = createStackNavigator();
+
+
+    return (
+      <NavigationContainer screenOptions={screenOptions}>
+        <Stack.Navigator screenOptions={screenOptions}>
+          {/* <Stack.Screen name="Splash" component={Splash} /> */}
+          <Stack.Screen name="Login" component={Login_screen} />
+          <Stack.Screen name="Register" component={Register_screen} />
+
+        </Stack.Navigator>
+      </NavigationContainer >
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -22,4 +53,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
 });
+const screenOptions = {
+  headerShown: false,
+}
