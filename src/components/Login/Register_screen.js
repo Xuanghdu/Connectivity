@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         margin: '10px',
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'bottom',
+        justifyContent: 'center',
     },
     avatar: {
         width: 100,
