@@ -6,6 +6,14 @@ import { cos } from 'react-native-reanimated';
 
 
 export class Login_forms extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            input_value: '',
+            input_change: '',
+        }
+
+    }
 
     render() {
         return (

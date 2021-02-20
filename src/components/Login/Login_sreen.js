@@ -9,7 +9,20 @@ import {
 import { Login_forms } from './Login_forms'
 
 export class Login_screen extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            input_value: '',
+        }
+    }
+
+    input_change(input_value) {
+        this.setState({ input_value: input_value })
+    }
+
     render() {
+        const { input_value } = this.state
+
         return (
             <KeyboardAvoidingView behavior='padding' style={styles.container}>
                 <View style={styles.avatar_container}>
@@ -21,7 +34,9 @@ export class Login_screen extends React.Component {
                     />
                 </View>
                 <View style={styles.form_container}>
-                    <Login_forms />
+                    <Login_forms
+                        input_value={input_value}
+                        input_change={(text) => this.input_change(text)} />
                 </View>
             </KeyboardAvoidingView>
         );
