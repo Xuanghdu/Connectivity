@@ -46,10 +46,14 @@ export const Me = (props) => {
         );
     }
     const [selectedValue, setSelectedValue] = useState("No. Leave me alone.");
-    const data = ["1","2","3","4","5", "6","7","8"];
-    const renderItem = ({item}) => (
+    const data = ["1", "2", "3", "4", "5", "6", "7", "8"];
+    const renderItem = ({ item }) => (
         <View>
-            <Image source={images[item]}/>
+            <TouchableOpacity activeOpacity={.5} onPress={() => large()}>
+                <Image
+                    style={style}
+                    source={images[item]} />
+            </TouchableOpacity>
         </View>
     );
     return (
@@ -97,7 +101,7 @@ export const Me = (props) => {
                 color="#841584"
             />
             <Text style={styles.header}>Achievements</Text>
-            <FlatList data={data} renderItem={renderItem}/>
+            <FlatList data={data} renderItem={renderItem} />
 
 
             {/* <FlatList
