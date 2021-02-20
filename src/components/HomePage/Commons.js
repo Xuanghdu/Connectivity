@@ -8,8 +8,7 @@ export function SectionTitle({ children }) {
         color: colorTheme.accent,
         fontFamily: "Lucida Console, Courier, monospace",
         fontSize: "1.2rem",
-        marginTop: ".3rem",
-        marginBottom: ".3rem",
+        marginVertical: ".3rem",
     };
     return <Text style={style}>{children}</Text>;
 }
