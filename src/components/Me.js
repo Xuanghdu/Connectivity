@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 
 export const Me = (props) => {
     return (
+        <View style={styles.row}>
         <View style={styles.container}>
             <Image
                 style={styles.avatar}
@@ -10,6 +11,8 @@ export const Me = (props) => {
                     uri: 'https://reactnative.dev/img/tiny_logo.png',
                 }}
             />
+        </View>
+        <View style={styles.container}>
             <Text style={styles.text}>USERNAME: {props.username}</Text>
             <Text style={styles.text}>Name: {props.name}</Text>
             <Text style={styles.text}>Date of Birth: {props.dob}</Text>
@@ -17,19 +20,24 @@ export const Me = (props) => {
             <Text style={styles.text}>Country/Region: {props.nat}</Text>
             <Text style={styles.text}>Contact: {props.contact}</Text>
         </View>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
+    row: {
+        flexDirection: "row",
+    },
     container: {
+        margin: '10px',
         flex: 1,
         backgroundColor: '#121212',
-        alignItems: 'center',
+        alignItems: 'left',
         justifyContent: 'center',
     },
     avatar: {
-        width: 50,
-        height: 50,
+        width: 100,
+        height: 100,
     },
     text: {
         fontFamily: 'Garamond',
