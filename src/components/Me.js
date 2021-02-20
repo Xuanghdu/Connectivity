@@ -61,13 +61,13 @@ const styles = StyleSheet.create({
         height: 100,
     },
     field: {
-        fontFamily: 'Garamond, Droid Serif, serif',
+        // fontFamily: 'Garamond, Droid Serif, serif',
         color: 'beige',
     },
     text: {
         margin: "10px",
         padding: 10,
-        fontFamily: 'Garamond, Droid Serif, serif',
+        // fontFamily: 'Garamond, Droid Serif, serif',
         color: 'beige',
     }
 });
