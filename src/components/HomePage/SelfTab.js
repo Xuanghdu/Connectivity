@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import { SectionDivider, SectionTitle } from './Commons'
 import { ColorThemeContext } from '../../contexts/ColorThemeContext'
@@ -6,17 +6,28 @@ import { ColorThemeContext } from '../../contexts/ColorThemeContext'
 function GoalItem({ index, children }) {
     const colorTheme = useContext(ColorThemeContext);
     const viewStyle = {
+        backgroundColor: colorTheme.tileBackground,
+        borderRadius: ".6rem",
         display: "flex",
         flexDirection: "row",
+        padding: ".3rem",
+        marginVertical: ".3rem",
     };
-    const textStyle = {
-        color: colorTheme.text,
-        backgroundColor: colorTheme.tile,
+    const indexStyle = {
+        color: colorTheme.tileText,
+        fontSize: "1.1rem",
+        fontWeight: "bold",
+        marginHorizontal: ".3rem",
+    };
+    const contentStyle = {
+        color: colorTheme.tileText,
+        fontSize: "1.1rem",
+        marginHorizontal: ".3rem",
     };
     return (
         <View style={viewStyle}>
-            <Text style={textStyle}>{index + 1}</Text>
-            <Text style={textStyle}>{children}</Text>
+            <Text style={indexStyle}>{index + 1}</Text>
+            <Text style={contentStyle}>{children}</Text>
         </View>
     );
 }
