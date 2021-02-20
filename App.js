@@ -23,11 +23,6 @@ export default class App extends Component {
     super(props)
 
   }
-  componentDidMount() {
-    setTimeout(() => {
-      NavigationActions.navigate('Splash');
-    }, 1000);
-  }
 
   render() {
     const Stack = createStackNavigator();
@@ -36,11 +31,13 @@ export default class App extends Component {
     return (
       <NavigationContainer screenOptions={screenOptions}>
         <Stack.Navigator screenOptions={screenOptions}>
-          {/* <Stack.Screen name="Splash" component={Splash} /> */}
 
+          <Stack.Screen name="Splash" component={Splash} />
           <Stack.Screen name="Login" component={Login_screen} />
           <Stack.Screen name="Register" component={Register_screen} />
           <Stack.Screen name="HomePage" component={HomePage} />
+          <Stack.Screen name="Me" component={Me} />
+
 
         </Stack.Navigator>
       </NavigationContainer >

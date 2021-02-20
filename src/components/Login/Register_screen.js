@@ -1,7 +1,6 @@
 import React from 'react';
 import {
     StyleSheet,
-    Text,
     View,
     Image,
     KeyboardAvoidingView
@@ -40,7 +39,7 @@ const styles = StyleSheet.create({
     },
     container: {
         backgroundColor: '#121212',
-        margin: '10px',
+        margin: 10,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
@@ -62,9 +61,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     text: {
-        margin: "10px",
-        padding: "10px",
-        fontFamily: 'Garamond',
+        margin: 10,
+        padding: 10,
+        // fontFamily: 'Garamond, Droid Serif, serif',
         color: 'beige',
     }
 });
