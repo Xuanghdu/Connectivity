@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
 
 export const Me = (props) => {
+    const [url, setUrl] = useState('https://reactnative.dev/img/tiny_logo.png');
+    const large = () => {
+        setUrl('https://reactnative.dev/img/header_logo.svg');
+    }
     return (
         <View style={styles.top}>
             <Text style={styles.header}>Personal Profile</Text>
@@ -33,11 +37,11 @@ export const Me = (props) => {
                 accessibilityLabel="Learn more about this purple button"
             />
             <Text style={styles.header}>Achievements</Text>
-            <TouchableOpacity activeOpacity={.5} onPress={callFun}>
+            <TouchableOpacity activeOpacity={.5} onPress={()=>large()}>
                 <Image
                     style={styles.postcardSmall}
                     source={{
-                        uri: 'https://reactnative.dev/img/tiny_logo.png',
+                        uri: url,
                     }}
                 />
             </TouchableOpacity>
@@ -59,6 +63,17 @@ function callFun() {
         </View>
     );
 }
+
+const UselessTextInput = () => {
+    const [value, onChangeText] = React.useState('Useless Placeholder');
+    return (
+      <TextInput
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+        onChangeText={text => onChangeText(text)}
+        value={value}
+      />
+    );
+  }
 
 const styles = StyleSheet.create({
     top: {
