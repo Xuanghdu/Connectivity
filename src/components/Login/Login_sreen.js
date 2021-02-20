@@ -8,29 +8,24 @@ import {
 } from 'react-native';
 import { Login_forms } from './Login_forms'
 
-export class Login_screen extends React.Component {
+export function Login_screen({ navigation }) {
+    return (
+        <KeyboardAvoidingView behavior='padding' style={styles.container} >
+            <View style={styles.avatar_container}>
+                <Image
+                    style={styles.avatar}
+                    source={{
+                        uri: 'https://reactnative.dev/img/tiny_logo.png',
+                    }}
+                />
+            </View>
+            <View style={styles.form_container}>
+                <Login_forms usage='Login' navigation={navigation} />
+            </View>
 
+        </KeyboardAvoidingView>
+    );
 
-
-    render() {
-
-
-        return (
-            <KeyboardAvoidingView behavior='padding' style={styles.container}>
-                <View style={styles.avatar_container}>
-                    <Image
-                        style={styles.avatar}
-                        source={{
-                            uri: 'https://reactnative.dev/img/tiny_logo.png',
-                        }}
-                    />
-                </View>
-                <View style={styles.form_container}>
-                    <Login_forms />
-                </View>
-            </KeyboardAvoidingView>
-        );
-    }
 }
 
 

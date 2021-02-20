@@ -1,6 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image, TextInput } from 'react-native';
+import {
+    StyleSheet, Text,
+    View, Button, TextInput,
+    TouchableOpacity
+} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { cos } from 'react-native-reanimated';
 
 
@@ -33,6 +39,9 @@ export class Login_forms extends React.Component {
     }
 
     render() {
+
+        const navigation = this.props.navigation;
+
         return (
             <View style={styles.container}>
 
@@ -41,21 +50,35 @@ export class Login_forms extends React.Component {
                     returnKeyType='next'
                     style={styles.input}
                     onChangeText={(username) => this.onChangeText('username', username)}
-                    onSubmitEditing={() => this.logininfo.focus()}
+                // onSubmitEditing={() => this.logininfo.focus()}
                 />
                 <TextInput
                     placeholder='Password'
                     returnKeyType='go'
                     secureTextEntry
                     style={styles.input}
-                    ref={(password) => this.logininfo = (password)}
+                    // ref={(password) => this.logininfo = (password)}
                     onChangeText={(password) => this.onChangeText('password', password)}
                 />
+                {/* <View style={styles}> */}
                 <Button
-                    title='Login'
+                    title={this.props.usage}
                     style={styles.button}
-                    onPress={() => console.log(this.logininfo)}
+                // onPress={}
                 />
+                < TouchableOpacity >
+                    <Text
+                        style={styles.text}
+                        onPress={
+                            () => this.props.usage === 'Login' ?
+                                navigation.navigate('Register') :
+                                navigation.navigate('Login')
+                        }
+                    >
+                        {this.props.usage === 'Login' ? 'Register' : 'Login'}
+                    </Text>
+                </ TouchableOpacity>
+                {/* </View> */}
                 <View style={styles.text}>
                     {this.state.username}
                     {this.state.password}
@@ -94,9 +117,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12
     },
     text: {
-        margin: "10px",
         padding: "10px",
         fontFamily: 'Garamond',
         color: 'beige',
+    },
+    row: {
+        flexDirection: 'row',
     }
 });

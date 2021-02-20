@@ -7,27 +7,30 @@ import {
     KeyboardAvoidingView
 } from 'react-native';
 import { Login_forms } from './Login_forms'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { cos } from 'react-native-reanimated';
 
-export class Register_screen extends React.Component {
+export function Register_screen({ navigation }) {
 
-    render() {
 
-        return (
-            <KeyboardAvoidingView behavior='padding' style={styles.container}>
-                <View style={styles.avatar_container}>
-                    <Image
-                        style={styles.avatar}
-                        source={{
-                            uri: 'https://reactnative.dev/img/tiny_logo.png',
-                        }}
-                    />
-                </View>
-                <View style={styles.form_container}>
-                    <Login_forms />
-                </View>
-            </KeyboardAvoidingView>
-        );
-    }
+
+    return (
+        <KeyboardAvoidingView behavior='padding' style={styles.container}>
+            <View style={styles.avatar_container}>
+                <Image
+                    style={styles.avatar}
+                    source={{
+                        uri: 'https://reactnative.dev/img/tiny_logo.png',
+                    }}
+                />
+            </View>
+            <View style={styles.form_container}>
+                <Login_forms usage='Register' navigation={navigation} />
+            </View>
+        </KeyboardAvoidingView>
+    );
+
 }
 
 
