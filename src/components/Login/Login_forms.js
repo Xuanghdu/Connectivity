@@ -45,12 +45,19 @@ export class Login_forms extends React.Component {
             }
         );
     }
+    random_submit = () => {
+        this.props.navigation.navigate(
+            'Me',
+            { username: "Adam", }
+
+        );
+    }
 
     interchange = () => {
         const navigation = this.props.navigation;
         this.props.usage === 'Login' ?
             navigation.navigate('Register') :
-            navigation.navigate('Login')
+            navigation.navigate('Login');
     }
 
     render() {
@@ -89,11 +96,7 @@ export class Login_forms extends React.Component {
                 < TouchableOpacity style={styles.random} >
                     <Text
                         style={styles.text}
-                        onPress={() => this.props.navigation.navigate('Scaffold', {
-
-                            userId: "Adam",
-
-                        })}>
+                        onPress={this.random_submit}>
                         Go
                     </Text>
                 </TouchableOpacity>
