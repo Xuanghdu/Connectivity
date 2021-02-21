@@ -9,24 +9,23 @@ import { PersonalGoalTile } from './PersonalGoalTile'
 
 
 export function SelfTab() {
+    const fetchData = async () => {
+        const [_, goalIds] = await httpGetJSON(`${serverRootUrl}/goal/get/self/${encodeURIComponent(userId)}`);
+        const goals = [];
+        for (let goalId of goalIds) {
+            const [_, detail] = await httpGetJSON(`${serverRootUrl}/goal/get/detail/${encodeURIComponent(goalId)}`);
+            goals.push({
+                id: goalId,
+                content: detail.text,
+            });
+            console.log(goals);
+        }
+        setPersonalGoals(goals);
+    };
+
     const userId = useContext(UserIdContext);
     const [personalGoals, setPersonalGoals] = useState([]);
-    useEffect(() => {
-        async function fetchData() {
-            const [_, goalIds] = await httpGetJSON(`${serverRootUrl}/goal/get/self/${userId}`);
-            const goals = [];
-            for (let goalId of goalIds) {
-                const [_, detail] = await httpGetJSON(`${serverRootUrl}/goal/get/detail/${goalId}`);
-                goals.push({
-                    id: goalId,
-                    content: detail.text,
-                });
-                console.log(goals);
-            }
-            setPersonalGoals(goals);
-        }
-        fetchData();
-    }, []);
+    useEffect(() => fetchData(), []);
 
     const personalGoalsRenderItem = ({ item, index }) => {
         const progress = index / (personalGoals.length - 1);
@@ -37,24 +36,29 @@ export function SelfTab() {
         );
     };
 
-    const GoalInput = () => {
-        const [value, onChangeText] = React.useState('');
-        return (
-            <TextInput
-                style={{
-                    height: 40, borderColor: 'gray', borderWidth: 1,
-                    fontSize: 14,
-                    backgroundColor: 'rgba(255,255,255,0.7)',
-                    marginBottom: 10,
-                    padding: "1%",
-                }}
-                placeholder='My Grand New Goal'
-                onChangeText={text => onChangeText(text)}
-                value={value}
-            />
-        );
-    }
-    const [selectedValue, setSelectedValue] = useState("No. Leave me alone.");
+    const [goalContent, setGoalContent] = React.useState('');
+
+    const [goalAccess, setGoalAccess] = useState("No. Leave me alone.");
+
+    const onGoalSubmit = async () => {
+        if (goalContent === '') {
+            alert('Goal content cannot be empty');
+            return;
+        }
+        const access = goalAccess === 0 ? 'self' : goalAccess === 1 ? 'friend' : 'public';
+        const settings = JSON.stringify({
+            userId: userId,
+            access: access,
+            content: goalContent,
+        });
+        const [success] = await httpGetJSON(`${serverRootUrl}/goal/add/${encodeURIComponent(settings)}`);
+        if (!success) {
+            // alert('Failed to add goal! Please try again later');
+            return;
+        }
+        fetchData();
+    };
+
     return (
         <View>
             <SectionTitle>Personal Goals</SectionTitle>
@@ -64,35 +68,40 @@ export function SelfTab() {
                 keyExtractor={item => item.id} />
             <Text style={styles.header}>Set A New Goal</Text>
             <Text style={styles.text}>Describe your new goal here:</Text>
-            <GoalInput />
+            <TextInput
+                style={{
+                    height: 40, borderColor: 'gray', borderWidth: 1,
+                    fontSize: 14,
+                    backgroundColor: 'rgba(255,255,255,0.7)',
+                    marginBottom: 10,
+                    padding: "1%",
+                }}
+                placeholder='My Grand New Goal'
+                onChangeText={text => setGoalContent(text)}
+                value={goalContent}
+            />
             <Text style={styles.text}>Do you want to invite others?</Text>
             <Picker
-                selectedValue={selectedValue}
+                selectedValue={goalAccess}
                 style={{
                     height: 40,
                     fontSize: 14,
                     backgroundColor: 'rgba(255,255,255,0.7)',
                     marginBottom: 10
                 }}
-                onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                onValueChange={(itemValue) => setGoalAccess(itemValue)}
             >
-                <Picker.Item label="No. Leave me alone." value="0" />
-                <Picker.Item label="Sure Yes! I want to invite my friends!" value="1" />
-                <Picker.Item label="Sure Yes! Make it public!" value="2" />
+                <Picker.Item label="No. Leave me alone." value={0} />
+                <Picker.Item label="Sure Yes! I want to invite my friends!" value={1} />
+                <Picker.Item label="Sure Yes! Make it public!" value={2} />
             </Picker>
             <Button
-                onPress={SetGoal()}
+                onPress={onGoalSubmit}
                 title="Set Your Goal"
                 color="#841584"
             />
         </View>
     );
-}
-
-const SetGoal = (value) => {
-    // return (
-    // personalGoals.push(value);
-    // );
 }
 
 const styles = StyleSheet.create({
