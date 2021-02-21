@@ -2,8 +2,10 @@ import React from 'react';
 import {
     StyleSheet,
     View,
+    Text,
     Image,
 } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Login_forms } from './Login_forms'
 
 export function Login_screen({ navigation }) {
@@ -17,7 +19,10 @@ export function Login_screen({ navigation }) {
             </View>
             <View style={styles.form_container}>
                 <Login_forms usage='Login' navigation={navigation} />
+
             </View>
+
+
         </View>
     );
 
@@ -54,5 +59,7 @@ const styles = StyleSheet.create({
         margin: 10,
         padding: 10,
         color: 'beige',
-    }
+        alignSelf: 'center',
+    },
+
 });
