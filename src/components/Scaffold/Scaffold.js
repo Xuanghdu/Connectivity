@@ -6,6 +6,9 @@ import { CalendarPage } from '../CalendarPage/CalendarPage';
 import { Me } from '../MePage/Me';
 import { vw, vh, vmin, vmax } from 'react-native-expo-viewport-units';
 import { Navigation } from 'react-native-navigation';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
 
 function BottomNavigationItem({ selected, onPress, children }) {
     const colorTheme = useContext(ColorThemeContext);
@@ -47,7 +50,31 @@ function BottomNavigationBar({ index, setIndex }) {
     );
 }
 
+const BottomTab = createBottomTabNavigator();
+
 export function Scaffold(props) {
+    const colorTheme = useContext(ColorThemeContext);
+    return (
+        <NavigationContainer independent>
+            <BottomTab.Navigator
+                screenOptions={({ route }) => ({
+                    tabBarIcon: ({ focused, color, size }) => {
+                        let iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
+                        return <Ionicons name={iconName} size={size} color={color} />;
+                    },
+                })}
+                tabBarOptions={{
+                    activeTintColor: colorTheme.accent,
+                    inactiveTintColor: colorTheme.divider,
+                }}>
+                <BottomTab.Screen name="Home" component={CalendarPage} />
+                <BottomTab.Screen name="Calendar" component={CalendarPage} />
+                <BottomTab.Screen name="Me" component={Me} />
+                <BottomTab.Screen name="Explore" component={Me} />
+            </BottomTab.Navigator>
+        </NavigationContainer>
+    );
+
     const [index, setIndex] = useState(0);
     return (
         <View style={styles.container}>
