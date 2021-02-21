@@ -89,11 +89,14 @@ export class Login_forms extends React.Component {
                     style={styles.input}
                     onChangeText={(password) => this.onChangeText('password', password)}
                 />
-                <Button
-                    title={this.props.usage}
-                    color='#ff6100'
-                    onPress={this.submit}
-                />
+
+                < TouchableOpacity style={styles.appButtonContainer} >
+                    <Text
+                        style={styles.appButtonText}
+                        onPress={this.submit}>
+                        {this.props.usage}
+                    </Text>
+                </TouchableOpacity>
                 < TouchableOpacity >
                     <Text
                         style={styles.text}
@@ -136,9 +139,28 @@ const styles = StyleSheet.create({
         padding: 5,
 
     },
+    appButtonContainer: {
+        // elevation: 8,
+        // paddingTop:10,
+        backgroundColor: "#ff6100",
+        borderRadius: 10,
+        width: 100,
+        height: 25,
+        // paddingVertical: 10,
+        // paddingHorizontal: 12
+    },
+    appButtonText: {
+        fontSize: 18,
+        color: "#fff",
+        fontWeight: "bold",
+        alignSelf: "center",
+        justifyContent: 'center',
+        textTransform: "uppercase"
+    },
+
     text: {
-        padding: 10,
-        fontSize: 10,
+        padding: 5,
+        fontSize: 8,
         color: 'beige',
     },
     row: {
