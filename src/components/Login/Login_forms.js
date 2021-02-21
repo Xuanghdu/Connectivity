@@ -128,10 +128,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     img: {
-        width: 100,
+        width: 210,
         height: 100,
     },
     input: {
+        width: 200,
         height: 30,
         fontSize: 14,
         backgroundColor: 'rgba(255,255,255,0.7)',
@@ -144,8 +145,12 @@ const styles = StyleSheet.create({
         // paddingTop:10,
         backgroundColor: "#ff6100",
         borderRadius: 10,
-        width: 100,
-        height: 25,
+        width: 200,
+        height: 30,
+        alignSelf: "center",
+        justifyContent: 'center',
+        marginBottom: 10,
+
         // paddingVertical: 10,
         // paddingHorizontal: 12
     },
@@ -155,12 +160,12 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         alignSelf: "center",
         justifyContent: 'center',
-        textTransform: "uppercase"
+        textTransform: "uppercase",
     },
 
     text: {
-        padding: 5,
-        fontSize: 8,
+        // padding: 5,
+        fontSize: 12,
         color: 'beige',
     },
     row: {
