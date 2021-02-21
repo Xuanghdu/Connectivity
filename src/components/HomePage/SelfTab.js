@@ -3,6 +3,7 @@ import { FlatList, Image, Text, View, StyleSheet, Button, TextInput } from 'reac
 import { SectionDivider, SectionTitle } from './Commons';
 import { ColorThemeContext } from '../../contexts/ColorThemeContext';
 import { Picker } from '@react-native-picker/picker';
+import { UserIdContext } from '../../contexts/UserIdContext';
 
 function PersonalGoalTile({ index, children, progress }) {
     const colorTheme = useContext(ColorThemeContext);
@@ -37,6 +38,11 @@ function PersonalGoalTile({ index, children, progress }) {
 }
 
 export function SelfTab({ personalGoals, usefulContent }) {
+    const userId = useContext(UserIdContext);
+    if (!userId) {
+        return <Text>Login expired. Reopen the app and login again.</Text>;
+    }
+
     if (true) {
         personalGoals = [];
         for (let i = 0; i < 6; ++i)
