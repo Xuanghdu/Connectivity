@@ -25,7 +25,7 @@ export function SelfTab() {
 
     const userId = useContext(UserIdContext);
     const [personalGoals, setPersonalGoals] = useState([]);
-    useEffect(() => fetchData(), []);
+    useEffect(() => { fetchData(); }, []);
 
     const personalGoalsRenderItem = ({ item, index }) => {
         const progress = index / (personalGoals.length - 1);
@@ -51,8 +51,8 @@ export function SelfTab() {
             access: access,
             content: goalContent,
         });
-        const [success] = await httpGetJSON(`${serverRootUrl}/goal/add/${encodeURIComponent(settings)}`);
-        if (!success) {
+        const [success, response] = await httpGetJSON(`${serverRootUrl}/goal/add/${encodeURIComponent(settings)}`);
+        if (!success || !response.success) {
             // alert('Failed to add goal! Please try again later');
             return;
         }
