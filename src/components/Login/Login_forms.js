@@ -5,10 +5,8 @@ import {
     View, Button, TextInput,
     TouchableOpacity
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { cos } from 'react-native-reanimated';
-import { serverRootUrl, httpGetAndHandleJSON } from '../../ServerRootUrl';
+
+import { serverRootUrl } from '../../ServerRootUrl';
 
 export class Login_forms extends React.Component {
     constructor() {
@@ -19,7 +17,6 @@ export class Login_forms extends React.Component {
         }
 
     }
-
     onChangeText = (key, value) => {
         this.setState({ [key]: value })
     }
@@ -74,10 +71,14 @@ export class Login_forms extends React.Component {
                     style={styles.input}
                     onChangeText={(password) => this.onChangeText('password', password)}
                 />
-                <Button
-                    title={this.props.usage}
-                    onPress={this.submit}
-                />
+
+                < TouchableOpacity style={styles.appButtonContainer} >
+                    <Text
+                        style={styles.appButtonText}
+                        onPress={this.submit}>
+                        {this.props.usage}
+                    </Text>
+                </TouchableOpacity>
                 < TouchableOpacity >
                     <Text
                         style={styles.text}
@@ -109,20 +110,44 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     img: {
-        width: 100,
+        width: 210,
         height: 100,
     },
     input: {
+        width: 200,
         height: 30,
         fontSize: 14,
         backgroundColor: 'rgba(255,255,255,0.7)',
         marginBottom: 10,
-        padding: "1%",
+        padding: 5,
 
     },
+    appButtonContainer: {
+        // elevation: 8,
+        // paddingTop:10,
+        backgroundColor: "#ff6100",
+        borderRadius: 10,
+        width: 200,
+        height: 30,
+        alignSelf: "center",
+        justifyContent: 'center',
+        marginBottom: 10,
+
+        // paddingVertical: 10,
+        // paddingHorizontal: 12
+    },
+    appButtonText: {
+        fontSize: 18,
+        color: "#fff",
+        fontWeight: "bold",
+        alignSelf: "center",
+        justifyContent: 'center',
+        textTransform: "uppercase",
+    },
+
     text: {
-        padding: 10,
-        // fontFamily: 'Garamond, Droid Serif, serif',
+        // padding: 5,
+        fontSize: 12,
         color: 'beige',
     },
     row: {
