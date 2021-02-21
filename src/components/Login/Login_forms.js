@@ -91,7 +91,7 @@ export class Login_forms extends React.Component {
                 />
                 <Button
                     title={this.props.usage}
-                    color=''
+                    color='#ff6100'
                     onPress={this.submit}
                 />
                 < TouchableOpacity >
@@ -138,6 +138,7 @@ const styles = StyleSheet.create({
     },
     text: {
         padding: 10,
+        fontSize: 10,
         color: 'beige',
     },
     row: {
