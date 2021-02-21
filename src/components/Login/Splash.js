@@ -24,7 +24,7 @@ export class Splash extends React.Component {
                 <View style={styles.avatar_container}>
                     <Image
                         style={styles.avatar}
-                        source={require("../../../img/logo/logo.PNG")}
+                        source={require("../../../img/logos/logo.jpg")}
                     />
                 </View>
             </KeyboardAvoidingView>
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     avatar: {
-        width: 100,
-        height: 100,
+        width: 320,
+        height: 180,
     },
     avatar_container: {
         flex: 0.5,

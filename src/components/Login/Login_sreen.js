@@ -13,7 +13,7 @@ export function Login_screen({ navigation }) {
             <View style={styles.avatar_container}>
                 <Image
                     style={styles.avatar}
-                    source={require("../../../img/logo/connect.PNG")}
+                    source={require('../../../img/logos/connect.jpg')}
                 />
             </View>
             <View style={styles.form_container}>
@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     avatar: {
-        width: 100,
-        height: 100,
+        width: 320,
+        height: 180,
     },
     avatar_container: {
         flex: 1,
