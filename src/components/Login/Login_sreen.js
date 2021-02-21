@@ -3,7 +3,6 @@ import {
     StyleSheet,
     View,
     Image,
-    KeyboardAvoidingView
 } from 'react-native';
 import { Login_forms } from './Login_forms'
 

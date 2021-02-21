@@ -3,12 +3,9 @@ import {
     StyleSheet,
     View,
     Image,
-    KeyboardAvoidingView
 } from 'react-native';
 import { Login_forms } from './Login_forms'
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { cos } from 'react-native-reanimated';
+
 
 export function Register_screen({ navigation }) {
 
