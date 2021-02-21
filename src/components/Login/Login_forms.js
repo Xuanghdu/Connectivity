@@ -78,10 +78,8 @@ export class Login_forms extends React.Component {
                     onChangeText={(password) => this.onChangeText('password', password)}
                 />
 
-                < TouchableOpacity style={styles.appButtonContainer} >
-                    <Text
-                        style={styles.appButtonText}
-                        onPress={this.submit}>
+                < TouchableOpacity style={styles.appButtonContainer} onPress={this.submit}>
+                    <Text style={styles.appButtonText} >
                         {this.props.usage}
                     </Text>
                 </TouchableOpacity>
