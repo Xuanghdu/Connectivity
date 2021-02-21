@@ -6,7 +6,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import { serverRootUrl, httpGetAndHandleJSON } from '../../ServerRootUrl';
+import { serverRootUrl, httpGetAndHandleJSON, httpGetJSON } from '../../ServerRootUrl';
 
 export class Login_forms extends React.Component {
     constructor() {
@@ -21,29 +21,28 @@ export class Login_forms extends React.Component {
         this.setState({ [key]: value })
     }
 
-    submit = () => {
+    submit = async () => {
         const userName = this.state.username;
         const password = this.state.password;
         if (userName === '' || password === '') {
             alert('Invalid user name or password!');
             return;
         }
-        httpGetAndHandleJSON(
-            `${serverRootUrl}/user/get/login/${userName}/${password}`,
-            (response) => {
-                if (response.success === true && response.userId) {
-                    console.log('login success');
-                    this.props.navigation.navigate(
-                        'Scaffold',
-                        {
-                            userId: response.userId,
-                        }
-                    );
-                } else {
-                    alert('Invalid user name or password!');
-                }
-            },
-            'Server error! Please try again later'
+        const [success, response] = await httpGetJSON(`${serverRootUrl}/user/get/login/${userName}/${password}`);
+        if (!success) {
+            alert('Server error! Please try again later');
+            return;
+        }
+        if (response.success !== true || !response.userId) {
+            alert('Invalid user name or password');
+            return;
+        }
+        console.log(`Login success! User id: ${response.userId}`);
+        this.props.navigation.navigate(
+            'Scaffold',
+            {
+                userId: response.userId,
+            }
         );
     }
 
