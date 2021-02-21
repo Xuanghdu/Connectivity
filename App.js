@@ -28,7 +28,6 @@ export default class App extends Component {
   render() {
     const Stack = createStackNavigator();
 
-
     return (
       <NavigationContainer screenOptions={screenOptions}>
         <Stack.Navigator screenOptions={screenOptions}>
@@ -38,7 +37,6 @@ export default class App extends Component {
           <Stack.Screen name="Register" component={Register_screen} />
           <Stack.Screen name="Scaffold" component={Scaffold} />
           <Stack.Screen name="Me" component={Me} />
-
 
         </Stack.Navigator>
       </NavigationContainer >
