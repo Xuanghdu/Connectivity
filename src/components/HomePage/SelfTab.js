@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FlatList, Image, Text, View, StyleSheet, Button, TextInput } from 'react-native';
 import { SectionDivider, SectionTitle } from './Commons';
 import { ColorThemeContext } from '../../contexts/ColorThemeContext';
 import { Picker } from '@react-native-picker/picker';
 import { UserIdContext } from '../../contexts/UserIdContext';
-import { serverRootUrl, httpGetAndHandleJSON } from '../../ServerRootUrl';
+import { serverRootUrl, httpGetAndHandleJSON, httpGetJSON } from '../../ServerRootUrl';
 
 function PersonalGoalTile({ index, children, progress }) {
     const colorTheme = useContext(ColorThemeContext);
@@ -41,24 +41,22 @@ function PersonalGoalTile({ index, children, progress }) {
 export function SelfTab() {
     const userId = useContext(UserIdContext);
     const [personalGoals, setPersonalGoals] = useState([]);
-    httpGetAndHandleJSON(
-        `${serverRootUrl}/goal/get/self/${userId}`,
-        (goalIds) => {
-            goalIds.forEach((goalId) => {
-                httpGetAndHandleJSON(
-                    `${serverRootUrl}/goal/get/detail/${goalId}`,
-                    (detail) => {
-                        setPersonalGoals([...personalGoals, {
-                            id: goalId,
-                            content: detail.text,
-                        }])
-                    },
-                    `Failed to retrieve info for goal ${goalId}`
-                );
-            });
-        },
-        'Failed to retrive personal goals'
-    );
+    useEffect(() => {
+        async function fetchData() {
+            const [_, goalIds] = await httpGetJSON(`${serverRootUrl}/goal/get/self/${userId}`);
+            const goals = [];
+            for (let goalId of goalIds) {
+                const [_, detail] = await httpGetJSON(`${serverRootUrl}/goal/get/detail/${goalId}`);
+                goals.push({
+                    id: goalId,
+                    content: detail.text,
+                });
+                console.log(goals);
+                setPersonalGoals(goals);
+            }
+        }
+        fetchData();
+    }, []);
 
     const personalGoalsRenderItem = ({ item, index }) => {
         const progress = index / (personalGoals.length - 1);
@@ -68,6 +66,7 @@ export function SelfTab() {
             </PersonalGoalTile>
         );
     };
+
     const GoalInput = () => {
         const [value, onChangeText] = React.useState('');
         return (
