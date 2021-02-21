@@ -13,9 +13,7 @@ export function Login_screen({ navigation }) {
             <View style={styles.avatar_container}>
                 <Image
                     style={styles.avatar}
-                    source={{
-                        uri: 'https://reactnative.dev/img/tiny_logo.png',
-                    }}
+                    source={require("../../../img/logo/connect.PNG")}
                 />
             </View>
             <View style={styles.form_container}>
@@ -34,7 +32,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     container: {
-        backgroundColor: '#121212',
+        backgroundColor: 'black',
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',

@@ -94,7 +94,7 @@ export class Login_forms extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#121212',
+        backgroundColor: 'black',
         alignItems: 'center',
         justifyContent: 'center',
     },
