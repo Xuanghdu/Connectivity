@@ -4,14 +4,16 @@ import { ColorThemeContext } from '../../contexts/ColorThemeContext';
 import { FlatGrid } from 'react-native-super-grid';
 
 const images = {
-    "1": require('../../../img/jpg/1.jpg'),
+    "6": require('../../../img/jpg/1.jpg'),
     "2": require('../../../img/jpg/2.jpg'),
-    "3": require('../../../img/jpg/3.jpg'),
+    "0": require('../../../img/jpg/3.jpg'),
     "4": require('../../../img/jpg/4.jpg'),
     "5": require('../../../img/jpg/5.jpg'),
-    "6": require('../../../img/jpg/6.jpg'),
-    "7": require('../../../img/jpg/7.jpg'),
-    "0": require('../../../img/jpg/8.jpg'),
+    "8": require('../../../img/jpg/6.jpg'),
+    "9": require('../../../img/jpg/7.jpg'),
+    "1": require('../../../img/jpg/8.jpg'),
+    "3": require('../../../img/jpg/9.jpg'),
+    "7": require('../../../img/jpg/10.jpg'),
 }
 
 function ImageItem({ index }) {
@@ -36,7 +38,7 @@ export const Me = (props) => {
     //     setStyle(styles.postcardLarge);
     // }
 
-    const data = ["0", "1", "2", "3", "4", "5", "6", "7"];
+    const data = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
     // const renderItem = ({ item }) => (
     //     <View>
     //         {/* <TouchableOpacity activeOpacity={.5} onPress={() => large(item)}> */}
