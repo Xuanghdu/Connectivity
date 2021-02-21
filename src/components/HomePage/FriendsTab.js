@@ -1,39 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { FlatList, Image, Text, View } from 'react-native';
+import { FlatList, Image, Text, View, TouchableOpacity } from 'react-native';
 import { SectionDivider, SectionTitle } from './Commons';
 import { ColorThemeContext } from '../../contexts/ColorThemeContext';
-
-function PersonalGoalTile({ index, children, progress }) {
-    const colorTheme = useContext(ColorThemeContext);
-    const saturation = 70 - 10 * progress;
-    const lightness = 65 - 35 * progress;
-    const viewStyle = {
-        backgroundColor: `hsl(0, ${saturation}%, ${lightness}%)`,
-        borderRadius: 9.6,
-        display: "flex",
-        flexDirection: "row",
-        padding: 4.8,
-        marginVertical: 4.8,
-    };
-    const indexStyle = {
-        color: colorTheme.tileText,
-        fontSize: 17.6,
-        fontWeight: "bold",
-        marginHorizontal: 4.8,
-        minWidth: 24,
-    };
-    const contentStyle = {
-        color: colorTheme.tileText,
-        fontSize: 17.6,
-        marginHorizontal: 4.8,
-    };
-    return (
-        <View style={viewStyle}>
-            <Text style={indexStyle}>{index + 1 + "."}</Text>
-            <Text style={contentStyle}>{children}</Text>
-        </View>
-    );
-}
+import { TextInput } from 'react-native-gesture-handler';
+import { PersonalGoalTile } from './PersonalGoalTile'
 
 export function FriendsTab({ personalGoals }) {
     if (true) {
