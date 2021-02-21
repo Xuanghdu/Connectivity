@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { FlatList, Image, Text, View, TouchableOpacity } from 'react-native';
+import { FlatList, Image, Alert, Text, View, TouchableOpacity } from 'react-native';
 import { SectionDivider, SectionTitle } from './Commons';
 import { ColorThemeContext } from '../../contexts/ColorThemeContext';
 import { TextInput } from 'react-native-gesture-handler';
@@ -28,12 +28,18 @@ export function PersonalGoalTile({ index, children, progress }) {
         fontSize: 17.6,
         marginHorizontal: 4.8,
     };
-    return (
-        <TouchableOpacity onPress={() => alert('nothing happens')}>
-            <View style={viewStyle}>
-                <Text style={indexStyle}>{index + 1 + "."}</Text>
-                <Text style={contentStyle}>{children}</Text>
-            </View>
-        </TouchableOpacity>
-    );
+
+    if (progress < 100) {
+        return (
+
+            <TouchableOpacity onPress={() => alert('Goal is in progress')} >
+                <View style={viewStyle}>
+                    <Text style={indexStyle}>{index + 1 + "."}</Text>
+                    <Text style={contentStyle}>{children}</Text>
+                </View>
+            </ TouchableOpacity>
+        );
+    } else {
+        return (<View></View>)
+    }
 }
