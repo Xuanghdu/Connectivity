@@ -1,5 +1,5 @@
-// export const serverRootUrl = 'http://34.95.21.15';
-export const serverRootUrl = 'http://localhost:1234';
+export const serverRootUrl = 'http://34.95.21.15';
+// export const serverRootUrl = 'http://localhost:1234';
 
 function getHTML(url) {
     return new Promise(function (resolve, reject) {
