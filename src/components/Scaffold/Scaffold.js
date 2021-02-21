@@ -4,6 +4,7 @@ import { ColorThemeContext } from "../../contexts/ColorThemeContext";
 import { HomePage } from '../HomePage/HomePage';
 import { CalendarPage } from '../CalendarPage/CalendarPage';
 import { Me } from '../MePage/Me';
+import { ExplorePage } from '../ExplorePage/ExplorePage';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
@@ -82,14 +83,10 @@ export function Scaffold({ userId }) {
                     <BottomTab.Screen name="Home" children={() => <HomePage username={userId} />} />
                     <BottomTab.Screen name="Calendar" component={CalendarPage} />
                     <BottomTab.Screen name="Me" children={() => <Me username={userId} />} />
-                    <BottomTab.Screen name="Explore" component={Me} />
+                    <BottomTab.Screen name="Explore" component={ExplorePage} />
 
                 </BottomTab.Navigator>
             </NavigationContainer>
         </UserIdContext.Provider>
     );
 }
-
-
-
-
