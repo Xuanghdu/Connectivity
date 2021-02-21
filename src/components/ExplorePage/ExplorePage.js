@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { FlatList, Image, Text, View } from 'react-native';
+import { FlatList, Image, Text, View, ScrollView } from 'react-native';
 import { SectionDivider, SectionTitle } from '../HomePage/Commons';
 import { ColorThemeContext } from '../../contexts/ColorThemeContext';
 import { FlatGrid } from 'react-native-super-grid';
@@ -50,13 +50,13 @@ export function ExplorePage(usefulContent) {
         paddingVertical: 16,
     };
     return (
-        <View style={style}>
+        <ScrollView style={style}>
             <SectionTitle>Userful Contents from public</SectionTitle>
             <FlatGrid
                 itemDimension={200}
                 data={usefulContent}
                 renderItem={usefulContentRenderItem}
                 keyExtractor={item => item.id} />
-        </View>
+        </ScrollView>
     );
 }
