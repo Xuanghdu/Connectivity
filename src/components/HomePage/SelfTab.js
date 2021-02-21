@@ -52,8 +52,8 @@ export function SelfTab() {
                     content: detail.text,
                 });
                 console.log(goals);
-                setPersonalGoals(goals);
             }
+            setPersonalGoals(goals);
         }
         fetchData();
     }, []);
