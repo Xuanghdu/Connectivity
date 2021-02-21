@@ -33,7 +33,10 @@ export default class App extends Component {
         <Stack.Navigator screenOptions={screenOptions}>
 
           <Stack.Screen name="Splash" component={Splash} />
+
           <Stack.Screen name="Login" component={Login_screen} />
+          {/* <Stack.Screen name="Login" children={() => <Login_screen flower='adam' />} /> */}
+
           <Stack.Screen name="Register" component={Register_screen} />
           <Stack.Screen name="Scaffold" component={Scaffold} />
           <Stack.Screen name="Me" component={Me} />
