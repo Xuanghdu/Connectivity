@@ -80,7 +80,7 @@ export function Scaffold({ navigation, userId }) {
                         inactiveBackgroundColor: colorTheme.bottomBar,
                         activeBackgroundColor: colorTheme.bottomBar,
                     }}>
-                    <BottomTab.Screen name="Home" children={() => <HomePage username='haha' />} />
+                    <BottomTab.Screen name="Home" children={() => <HomePage username='testing for passing username' />} />
                     <BottomTab.Screen name="Calendar" component={CalendarPage} />
                     <BottomTab.Screen name="Me" children={() => <Me username={userId} />} />
                     <BottomTab.Screen name="Explore" component={ExplorePage} />
