@@ -98,7 +98,7 @@ export class Login_forms extends React.Component {
                     style={styles.random}
                     onPress={this.random_submit}
                 >
-                    <Text style={styles.text}>Go</Text>
+                    <Text style={styles.text}> Go </Text>
                 </TouchableOpacity>
 
             </View >

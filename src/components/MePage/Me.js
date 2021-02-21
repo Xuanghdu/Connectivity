@@ -28,7 +28,7 @@ function ImageItem({ index }) {
     );
 }
 
-export const Me = (props) => {
+export function Me(props) {
 
     // const [style, setStyle] = useState(styles.postcardSmall);
     // const large = (item) => {
