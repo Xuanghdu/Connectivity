@@ -28,16 +28,19 @@ export class Login_forms extends React.Component {
             alert('Invalid user name or password!');
             return;
         }
-        const [success, response] = await httpGetJSON(`${serverRootUrl}/user/get/login/${userName}/${password}`);
+        const usage = this.props.usage === 'Login' ? 'login' : 'register';
+        const [success, response] = await httpGetJSON(`${serverRootUrl}/user/get/${usage}/${userName}/${password}`);
         if (!success) {
             alert('Server error! Please try again later');
             return;
         }
-        if (response.success !== true || !response.userId) {
-            alert('Invalid user name or password');
+        if (response.success !== true) {
+            alert(this.props.usage === 'Login'
+                ? 'Wrong user name or password'
+                : 'User name has been used, try another one');
             return;
         }
-        console.log(`Login success! User id: ${response.userId}`);
+        console.log(`${this.props.usage} success! User id: ${response.userId}`);
         this.props.navigation.navigate(
             'Scaffold',
             {
