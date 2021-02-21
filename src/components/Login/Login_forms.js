@@ -27,7 +27,6 @@ export class Login_forms extends React.Component {
     submit = () => {
         const userName = this.state.username;
         const password = this.state.password;
-<<<<<<< HEAD
         if (userName === '' || password === '') {
             alert('Invalid user name or password!');
             return;
@@ -49,46 +48,6 @@ export class Login_forms extends React.Component {
             },
             'Server error! Please try again later'
         );
-=======
-        if (this.props.usage === 'Register') {
-
-        } else {
-            if (userName === '' || password === '') {
-                alert('Invalid user name or password!');
-                return;
-            }
-
-            const request = new XMLHttpRequest();
-            request.open("GET", `${serverRootUrl}/user/get/login/${userName}/${password}`, true);
-
-            request.onreadystatechange = () => {
-                console.log(request.readyState);
-                if (request.readyState === XMLHttpRequest.DONE) {
-                    const status = request.status;
-                    if (status === 0 || (status >= 200 && status < 400)) {
-                        const response = JSON.parse(request.responseText);
-                        if (response.success === true && response.userId) {
-                            console.log('login success');
-                            this.props.navigation.navigate(
-                                'Scaffold',
-                                {
-                                    userId: response.userId,
-                                }
-                            );
-                        } else {
-                            alert('Invalid user name or password!');
-                        }
-                    } else {
-                        alert('Server error! Please try again later.');
-                    }
-                }
-
-            }
-
-        }
-
-        request.send();
->>>>>>> 8cde4419c263a81a75e28614192f6dae062b109c
     }
 
     interchange = () => {

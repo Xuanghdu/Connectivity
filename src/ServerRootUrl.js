@@ -20,5 +20,9 @@ export function httpGetAndHandleJSON(url, handler, errorMessage) {
             }
         }
     };
-    request.send();
+    try {
+        request.send();
+    } catch {
+        alert(errorMessage);
+    }
 }
