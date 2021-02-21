@@ -87,12 +87,17 @@ export class Login_forms extends React.Component {
                         {this.props.usage === 'Login' ? 'Register' : 'Login'}
                     </Text>
                 </ TouchableOpacity>
-                <View style={styles.container}>
-                    <Text>
-                        {this.state.username}
-                        {this.state.password}
+                < TouchableOpacity style={styles.random} >
+                    <Text
+                        style={styles.text}
+                        onPress={() => this.props.navigation.navigate('Scaffold', {
+
+                            userId: 'Anonomous',
+
+                        })}>
+                        Go
                     </Text>
-                </View>
+                </TouchableOpacity>
 
             </View >
 
@@ -152,5 +157,16 @@ const styles = StyleSheet.create({
     },
     row: {
         flexDirection: 'row',
+    },
+    random: {
+        marginTop: 20,
+        backgroundColor: "#ff6100",
+        borderRadius: 30,
+        width: 30,
+        height: 30,
+        alignSelf: "center",
+        alignItems: 'center',
+        justifyContent: 'center',
+
     }
 });
