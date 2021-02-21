@@ -51,7 +51,7 @@ function BottomNavigationBar({ index, setIndex }) {
 
 const BottomTab = createBottomTabNavigator();
 
-export function Scaffold({ userId }) {
+export function Scaffold({ navigation, userId }) {
     const colorTheme = useContext(ColorThemeContext);
     return (
         <UserIdContext.Provider value={userId}>
@@ -79,7 +79,7 @@ export function Scaffold({ userId }) {
                         inactiveBackgroundColor: colorTheme.bottomBar,
                         activeBackgroundColor: colorTheme.bottomBar,
                     }}>
-                    <BottomTab.Screen name="Home" children={() => <HomePage username={userId} />} />
+                    <BottomTab.Screen name="Home" children={() => <HomePage username='haha' />} />
                     <BottomTab.Screen name="Calendar" component={CalendarPage} />
                     <BottomTab.Screen name="Me" children={() => <Me username={userId} />} />
                     <BottomTab.Screen name="Explore" component={Me} />
