@@ -131,12 +131,11 @@ const styles = StyleSheet.create({
         fontSize: 14,
         backgroundColor: 'rgba(255,255,255,0.7)',
         marginBottom: 10,
-        padding: "1%",
+        padding: 5,
 
     },
     text: {
         padding: 10,
-        // fontFamily: 'Garamond, Droid Serif, serif',
         color: 'beige',
     },
     row: {

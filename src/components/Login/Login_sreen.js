@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
     text: {
         margin: 10,
         padding: 10,
-        // fontFamily: 'Garamond, Droid Serif, serif',
         color: 'beige',
     }
 });
