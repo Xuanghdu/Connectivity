@@ -52,7 +52,8 @@ function BottomNavigationBar({ index, setIndex }) {
 
 const BottomTab = createBottomTabNavigator();
 
-export function Scaffold({ navigation, userId }) {
+export function Scaffold({ route }) {
+    const { userId } = route.params;
     const colorTheme = useContext(ColorThemeContext);
     return (
         <UserIdContext.Provider value={userId}>
