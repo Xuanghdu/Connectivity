@@ -29,10 +29,11 @@ export function PersonalGoalTile({ index, children, progress }) {
         marginHorizontal: 4.8,
     };
 
+
     if (progress < 100) {
         return (
 
-            <TouchableOpacity onPress={() => Alert.alert('', 'Goal is in progress')} >
+            <TouchableOpacity onPress={() => Alert.alert('', 'Goal on progress: ' + progress.toString() + '%')} >
                 <View style={viewStyle}>
                     <Text style={indexStyle}>{index + 1 + "."}</Text>
                     <Text style={contentStyle}>{children}</Text>
