@@ -16,6 +16,7 @@ export const colorThemes = {
         tileText: "black",
         titleBorder: "black",
         titleText: "black",
+        bottomBar: "#222222",
     },
     light: {
         accent: "#FE9B56",
@@ -24,11 +25,12 @@ export const colorThemes = {
         cardText: "black",
         divider: "gray",
         text: "black",
-        tileBackground: "#FE5B5B",
+        tileBackground: "#DDDDDD",
         tileBar: "gray",
         tileText: "black",
         titleBorder: "black",
         titleText: "black",
+        bottomBar: "gray",
     },
 };
 

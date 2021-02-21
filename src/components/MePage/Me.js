@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { FlatList, StyleSheet, Text, View, Image, Button, TouchableOpacity, TextInput, Alert } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Image } from 'react-native';
 import { ColorThemeContext } from '../../contexts/ColorThemeContext';
 import { FlatGrid } from 'react-native-super-grid';
 
@@ -51,7 +51,7 @@ export const Me = (props) => {
         return <ImageItem index={index} />;
     };
     return (
-        <View style={styles.top}>
+        <ScrollView style={styles.top}>
             <Text style={styles.header}>Personal Profile</Text>
             <View style={styles.row}>
                 <View style={styles.container}>
@@ -85,7 +85,7 @@ export const Me = (props) => {
                 itemDimension={144}
                 data={data}
                 renderItem={renderItem} />
-        </View>
+        </ScrollView>
     );
 }
 
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     top: {
         backgroundColor: "black",
         padding: 20,
-        marginVertical: 10,
+        // marginVertical: 10,
     },
     row: {
         flexDirection: "row",

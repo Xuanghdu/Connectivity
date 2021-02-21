@@ -57,13 +57,24 @@ export function Scaffold(props) {
             <BottomTab.Navigator
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
-                        let iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
+                        let iconName;
+                        if (route.name === 'Home') {
+                            iconName = focused ? 'ios-home' : 'ios-home-outline';
+                        } else if (route.name === 'Calendar') {
+                            iconName = focused ? 'ios-calendar' : 'ios-calendar-outline';
+                        } else if (route.name === 'Me') {
+                            iconName = focused ? 'ios-person' : 'ios-person-outline';
+                        } else if (route.name === 'Explore') {
+                            iconName = focused ? 'ios-search' : 'ios-search-outline';
+                        }
                         return <Ionicons name={iconName} size={size} color={color} />;
                     },
                 })}
                 tabBarOptions={{
                     activeTintColor: colorTheme.accent,
                     inactiveTintColor: colorTheme.divider,
+                    inactiveBackgroundColor: colorTheme.bottomBar,
+                    activeBackgroundColor: colorTheme.bottomBar,
                 }}>
                 <BottomTab.Screen name="Home" component={HomePage} />
                 <BottomTab.Screen name="Calendar" component={CalendarPage} />
