@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {
-    StyleSheet, Text,
+    StyleSheet, Text, Alert,
     View, Button, TextInput,
     TouchableOpacity
 } from 'react-native';
@@ -50,7 +50,7 @@ export class Login_forms extends React.Component {
     }
     random_submit = () => {
         this.props.navigation.navigate(
-            'Me',
+            'Scaffold',
             { username: "Adam", }
 
         );
@@ -62,6 +62,9 @@ export class Login_forms extends React.Component {
             navigation.navigate('Register') :
             navigation.navigate('Login');
     }
+
+
+
 
     render() {
         return (
@@ -103,6 +106,8 @@ export class Login_forms extends React.Component {
                 >
                     <Text style={styles.text}> Go </Text>
                 </TouchableOpacity>
+
+
 
             </View >
 
