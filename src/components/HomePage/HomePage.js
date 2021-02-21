@@ -62,11 +62,9 @@ export function HomePage(props) {
         paddingVertical: 16,
     };
     return (
-        <View style={style}>
+        <ScrollView style={style}>
             <TopNavigationBar index={index} setIndex={setIndex} />
-            <ScrollView>
-                {index == 0 ? <SelfTab /> : index == 1 ? <FriendsTab /> : <PublicTab />}
-            </ScrollView>
-        </View>
+            {index == 0 ? <SelfTab /> : index == 1 ? <FriendsTab /> : <PublicTab />}
+        </ScrollView>
     );
 }
