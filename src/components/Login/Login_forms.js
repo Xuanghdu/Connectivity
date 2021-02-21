@@ -100,12 +100,7 @@ export class Login_forms extends React.Component {
                         {this.props.usage === 'Login' ? 'Register' : 'Login'}
                     </Text>
                 </ TouchableOpacity>
-                < TouchableOpacity
-                    style={styles.random}
-                    onPress={this.random_submit}
-                >
-                    <Text style={styles.text}> Go </Text>
-                </TouchableOpacity>
+
 
 
 
