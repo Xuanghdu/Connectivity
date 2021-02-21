@@ -5,10 +5,8 @@ import {
     View, Button, TextInput,
     TouchableOpacity
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { cos } from 'react-native-reanimated';
-import { serverRootUrl, httpGetAndHandleJSON } from '../../ServerRootUrl';
+
+import { serverRootUrl } from '../../ServerRootUrl';
 
 export class Login_forms extends React.Component {
     constructor() {
@@ -19,7 +17,6 @@ export class Login_forms extends React.Component {
         }
 
     }
-
     onChangeText = (key, value) => {
         this.setState({ [key]: value })
     }
@@ -27,29 +24,6 @@ export class Login_forms extends React.Component {
     submit = () => {
         const userName = this.state.username;
         const password = this.state.password;
-<<<<<<< HEAD
-        if (userName === '' || password === '') {
-            alert('Invalid user name or password!');
-            return;
-        }
-        httpGetAndHandleJSON(
-            `${serverRootUrl}/user/get/login/${userName}/${password}`,
-            (response) => {
-                if (response.success === true && response.userId) {
-                    console.log('login success');
-                    this.props.navigation.navigate(
-                        'Scaffold',
-                        {
-                            userId: response.userId,
-                        }
-                    );
-                } else {
-                    alert('Invalid user name or password!');
-                }
-            },
-            'Server error! Please try again later'
-        );
-=======
         if (this.props.usage === 'Register') {
 
         } else {
@@ -84,11 +58,11 @@ export class Login_forms extends React.Component {
                 }
 
             }
+            request.send();
+
 
         }
 
-        request.send();
->>>>>>> 8cde4419c263a81a75e28614192f6dae062b109c
     }
 
     interchange = () => {
@@ -117,6 +91,7 @@ export class Login_forms extends React.Component {
                 />
                 <Button
                     title={this.props.usage}
+                    color=''
                     onPress={this.submit}
                 />
                 < TouchableOpacity >
