@@ -6,7 +6,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import { serverRootUrl } from '../../ServerRootUrl';
+import { serverRootUrl, httpGetAndHandleJSON } from '../../ServerRootUrl';
 
 export class Login_forms extends React.Component {
     constructor() {
