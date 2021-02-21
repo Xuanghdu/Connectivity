@@ -5,38 +5,8 @@ import { ColorThemeContext } from '../../contexts/ColorThemeContext';
 import { Picker } from '@react-native-picker/picker';
 import { UserIdContext } from '../../contexts/UserIdContext';
 import { serverRootUrl, httpGetAndHandleJSON, httpGetJSON } from '../../ServerRootUrl';
+import { PersonalGoalTile } from './PersonalGoalTile'
 
-function PersonalGoalTile({ index, children, progress }) {
-    const colorTheme = useContext(ColorThemeContext);
-    const saturation = 70 - 10 * progress;
-    const lightness = 65 - 35 * progress;
-    const viewStyle = {
-        backgroundColor: `hsl(0, ${saturation}%, ${lightness}%)`,
-        borderRadius: 9.6,
-        display: "flex",
-        flexDirection: "row",
-        padding: 4.8,
-        marginVertical: 4.8,
-    };
-    const indexStyle = {
-        color: colorTheme.tileText,
-        fontSize: 17.6,
-        fontWeight: "bold",
-        marginHorizontal: 4.8,
-        minWidth: 24,
-    };
-    const contentStyle = {
-        color: colorTheme.tileText,
-        fontSize: 17.6,
-        marginHorizontal: 4.8,
-    };
-    return (
-        <View style={viewStyle}>
-            <Text style={indexStyle}>{index + 1 + "."}</Text>
-            <Text style={contentStyle}>{children}</Text>
-        </View>
-    );
-}
 
 export function SelfTab() {
     const userId = useContext(UserIdContext);
@@ -94,7 +64,7 @@ export function SelfTab() {
                 keyExtractor={item => item.id} />
             <Text style={styles.header}>Set A New Goal</Text>
             <Text style={styles.text}>Describe your new goal here:</Text>
-            <GoalInput></GoalInput>
+            <GoalInput />
             <Text style={styles.text}>Do you want to invite others?</Text>
             <Picker
                 selectedValue={selectedValue}
@@ -111,7 +81,7 @@ export function SelfTab() {
                 <Picker.Item label="Sure Yes! Make it public!" value="2" />
             </Picker>
             <Button
-                onPress={SetGoal}
+                onPress={SetGoal()}
                 title="Set Your Goal"
                 color="#841584"
             />
@@ -119,7 +89,11 @@ export function SelfTab() {
     );
 }
 
-const SetGoal = () => { }
+const SetGoal = (value) => {
+    // return (
+    // personalGoals.push(value);
+    // );
+}
 
 const styles = StyleSheet.create({
     header: {
