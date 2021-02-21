@@ -7,6 +7,7 @@ import { Me } from '../MePage/Me';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
+import { UserIdContext } from '../../contexts/UserIdContext';
 
 function BottomNavigationItem({ selected, onPress, children }) {
     const colorTheme = useContext(ColorThemeContext);
@@ -50,37 +51,39 @@ function BottomNavigationBar({ index, setIndex }) {
 
 const BottomTab = createBottomTabNavigator();
 
-export function Scaffold(props) {
+export function Scaffold({ userId }) {
     const colorTheme = useContext(ColorThemeContext);
     return (
-        <NavigationContainer independent>
-            <BottomTab.Navigator
-                screenOptions={({ route }) => ({
-                    tabBarIcon: ({ focused, color, size }) => {
-                        let iconName;
-                        if (route.name === 'Home') {
-                            iconName = focused ? 'ios-home' : 'ios-home-outline';
-                        } else if (route.name === 'Calendar') {
-                            iconName = focused ? 'ios-calendar' : 'ios-calendar-outline';
-                        } else if (route.name === 'Me') {
-                            iconName = focused ? 'ios-person' : 'ios-person-outline';
-                        } else if (route.name === 'Explore') {
-                            iconName = focused ? 'ios-search' : 'ios-search-outline';
-                        }
-                        return <Ionicons name={iconName} size={size} color={color} />;
-                    },
-                })}
-                tabBarOptions={{
-                    activeTintColor: colorTheme.accent,
-                    inactiveTintColor: colorTheme.divider,
-                    inactiveBackgroundColor: colorTheme.bottomBar,
-                    activeBackgroundColor: colorTheme.bottomBar,
-                }}>
-                <BottomTab.Screen name="Home" component={HomePage} />
-                <BottomTab.Screen name="Calendar" component={CalendarPage} />
-                <BottomTab.Screen name="Me" component={Me} />
-                <BottomTab.Screen name="Explore" component={Me} />
-            </BottomTab.Navigator>
-        </NavigationContainer>
+        <UserIdContext.Provider value={userId}>
+            <NavigationContainer independent>
+                <BottomTab.Navigator
+                    screenOptions={({ route }) => ({
+                        tabBarIcon: ({ focused, color, size }) => {
+                            let iconName;
+                            if (route.name === 'Home') {
+                                iconName = focused ? 'ios-home' : 'ios-home-outline';
+                            } else if (route.name === 'Calendar') {
+                                iconName = focused ? 'ios-calendar' : 'ios-calendar-outline';
+                            } else if (route.name === 'Me') {
+                                iconName = focused ? 'ios-person' : 'ios-person-outline';
+                            } else if (route.name === 'Explore') {
+                                iconName = focused ? 'ios-search' : 'ios-search-outline';
+                            }
+                            return <Ionicons name={iconName} size={size} color={color} />;
+                        },
+                    })}
+                    tabBarOptions={{
+                        activeTintColor: colorTheme.accent,
+                        inactiveTintColor: colorTheme.divider,
+                        inactiveBackgroundColor: colorTheme.bottomBar,
+                        activeBackgroundColor: colorTheme.bottomBar,
+                    }}>
+                    <BottomTab.Screen name="Home" component={HomePage} />
+                    <BottomTab.Screen name="Calendar" component={CalendarPage} />
+                    <BottomTab.Screen name="Me" component={Me} />
+                    <BottomTab.Screen name="Explore" component={Me} />
+                </BottomTab.Navigator>
+            </NavigationContainer>
+        </UserIdContext.Provider>
     );
 }
