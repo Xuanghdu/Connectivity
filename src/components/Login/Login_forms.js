@@ -81,7 +81,10 @@ export class Login_forms extends React.Component {
                     onChangeText={(password) => this.onChangeText('password', password)}
                 />
 
-                < TouchableOpacity style={styles.appButtonContainer} onPress={this.submit}>
+                < TouchableOpacity
+                    style={styles.appButtonContainer}
+                    onPress={this.submit}
+                >
                     <Text style={styles.appButtonText} >
                         {this.props.usage}
                     </Text>
@@ -94,12 +97,11 @@ export class Login_forms extends React.Component {
                         {this.props.usage === 'Login' ? 'Register' : 'Login'}
                     </Text>
                 </ TouchableOpacity>
-                < TouchableOpacity style={styles.random} >
-                    <Text
-                        style={styles.text}
-                        onPress={this.random_submit}>
-                        Go
-                    </Text>
+                < TouchableOpacity
+                    style={styles.random}
+                    onPress={this.random_submit}
+                >
+                    <Text style={styles.text}> Go </Text>
                 </TouchableOpacity>
 
             </View >

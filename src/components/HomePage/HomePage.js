@@ -4,6 +4,7 @@ import { ColorThemeContext } from "../../contexts/ColorThemeContext";
 import { SelfTab } from './SelfTab'
 import { FriendsTab } from './FriendsTab';
 import { PublicTab } from './PublicTab';
+import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 
 function TopNavigationItem({ selected, onPress, children }) {
     const colorTheme = useContext(ColorThemeContext);
@@ -63,6 +64,7 @@ export function HomePage(props) {
     };
     return (
         <ScrollView style={style}>
+            <Text style={{ backgroundColor: '#fff' }}>{props.username}</Text>
             <TopNavigationBar index={index} setIndex={setIndex} />
             {index == 0 ? <SelfTab /> : index == 1 ? <FriendsTab /> : <PublicTab />}
         </ScrollView>
