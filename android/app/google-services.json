@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "895956670064",
+    "project_id": "connectivity-uofthacks",
+    "storage_bucket": "connectivity-uofthacks.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895956670064:android:0c36d5334eb9ac939c06b5",
+        "android_client_info": {
+          "package_name": "com.connectivity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "895956670064-ac4q0cgqu3jpaif4gn61jts4v96p88mk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTxKUaO5r9s_IHRcGwc79fshjT_7Hog70"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "895956670064-ac4q0cgqu3jpaif4gn61jts4v96p88mk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
