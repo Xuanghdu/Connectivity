@@ -21,7 +21,7 @@ function CalendarDayItem({ index }) {
         borderColor: colorTheme.accent,
         borderStyle: "solid",
         borderWidth: 2,
-        height: 65,
+        height: 64,
     };
     const indexStyle = {
         color: colorTheme.text,
