@@ -37,7 +37,7 @@ export function ExplorePage(usefulContent) {
         for (let i = 0; i < 19; ++i)
             usefulContent.push({
                 id: i.toString(),
-                title: "Bla bla bla " + i,
+                title: "Public resource " + i,
                 imageUri: "https://reactnative.dev/img/tiny_logo.png",
             });
     }

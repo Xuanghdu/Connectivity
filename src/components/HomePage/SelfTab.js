@@ -56,6 +56,7 @@ export function SelfTab() {
             // alert('Failed to add goal! Please try again later');
             return;
         }
+        setGoalContent('');
         fetchData();
     };
 
