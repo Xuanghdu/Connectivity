@@ -35,7 +35,7 @@ function BottomNavigationBar({ index, setIndex }) {
     };
     return (
         <View style={style}>
-            {['home', 'calendar', 'me', 'expore'].map((title, thisIndex) => {
+            {['home', 'calendar', 'me', 'explore'].map((title, thisIndex) => {
                 return (
                     <BottomNavigationItem
                         key={title}
@@ -72,18 +72,24 @@ export function Scaffold({ userId }) {
                             return <Ionicons name={iconName} size={size} color={color} />;
                         },
                     })}
+
                     tabBarOptions={{
                         activeTintColor: colorTheme.accent,
                         inactiveTintColor: colorTheme.divider,
                         inactiveBackgroundColor: colorTheme.bottomBar,
                         activeBackgroundColor: colorTheme.bottomBar,
                     }}>
-                    <BottomTab.Screen name="Home" component={HomePage} />
+                    <BottomTab.Screen name="Home" children={() => <HomePage username={userId} />} />
                     <BottomTab.Screen name="Calendar" component={CalendarPage} />
-                    <BottomTab.Screen name="Me" component={Me} />
+                    <BottomTab.Screen name="Me" children={() => <Me username={userId} />} />
                     <BottomTab.Screen name="Explore" component={Me} />
+
                 </BottomTab.Navigator>
             </NavigationContainer>
         </UserIdContext.Provider>
     );
 }
+
+
+
+

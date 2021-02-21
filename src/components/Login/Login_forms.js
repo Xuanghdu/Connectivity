@@ -92,7 +92,7 @@ export class Login_forms extends React.Component {
                         style={styles.text}
                         onPress={() => this.props.navigation.navigate('Scaffold', {
 
-                            userId: 'Anonomous',
+                            userId: "Adam",
 
                         })}>
                         Go
