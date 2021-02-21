@@ -8,7 +8,7 @@ import {
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Login_forms } from './Login_forms'
 
-export function Login_screen({ navigation }) {
+export function Login_screen({ navigation, flower }) {
     return (
         <View style={styles.container}>
             <View style={styles.avatar_container}>
@@ -19,7 +19,6 @@ export function Login_screen({ navigation }) {
             </View>
             <View style={styles.form_container}>
                 <Login_forms usage='Login' navigation={navigation} />
-
             </View>
 
 
