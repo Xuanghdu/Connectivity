@@ -4,6 +4,7 @@ import { SectionDivider, SectionTitle } from './Commons';
 import { ColorThemeContext } from '../../contexts/ColorThemeContext';
 import { Picker } from '@react-native-picker/picker';
 import { UserIdContext } from '../../contexts/UserIdContext';
+import { serverRootUrl, httpGetAndHandleJSON } from '../../ServerRootUrl';
 
 function PersonalGoalTile({ index, children, progress }) {
     const colorTheme = useContext(ColorThemeContext);
@@ -37,20 +38,27 @@ function PersonalGoalTile({ index, children, progress }) {
     );
 }
 
-export function SelfTab({ personalGoals, usefulContent }) {
+export function SelfTab() {
     const userId = useContext(UserIdContext);
-    if (!userId) {
-        return <Text>Login expired. Reopen the app and login again.</Text>;
-    }
-
-    if (true) {
-        personalGoals = [];
-        for (let i = 0; i < 6; ++i)
-            personalGoals.push({
-                id: i.toString(),
-                content: 'goal ' + (i + 1),
+    const [personalGoals, setPersonalGoals] = useState([]);
+    httpGetAndHandleJSON(
+        `${serverRootUrl}/goal/get/self/${userId}`,
+        (goalIds) => {
+            goalIds.forEach((goalId) => {
+                httpGetAndHandleJSON(
+                    `${serverRootUrl}/goal/get/detail/${goalId}`,
+                    (detail) => {
+                        setPersonalGoals([...personalGoals, {
+                            id: goalId,
+                            content: detail.text,
+                        }])
+                    },
+                    `Failed to retrieve info for goal ${goalId}`
+                );
             });
-    }
+        },
+        'Failed to retrive personal goals'
+    );
 
     const personalGoalsRenderItem = ({ item, index }) => {
         const progress = index / (personalGoals.length - 1);
