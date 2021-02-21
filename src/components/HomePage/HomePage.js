@@ -64,7 +64,6 @@ export function HomePage(props) {
     };
     return (
         <ScrollView style={style}>
-            <Text style={{ backgroundColor: '#fff' }}>{props.username}</Text>
             <TopNavigationBar index={index} setIndex={setIndex} />
             {index == 0 ? <SelfTab /> : index == 1 ? <FriendsTab /> : <PublicTab />}
         </ScrollView>
